@@ -1,5 +1,6 @@
 from otree.api import (
-    models, widgets, BaseConstants, BaseSubsession, BaseGroup, BasePlayer
+    models, BaseConstants, BaseSubsession, BaseGroup, BasePlayer,
+    Currency as c
 )
 
 
@@ -17,6 +18,7 @@ class Constants(BaseConstants):
 
     instructions_template = 'beautycontest/instructions.html'
 
+    endowment = c(100)
 
 
 
@@ -25,8 +27,12 @@ class Subsession(BaseSubsession):
 
 
 class Group(BaseGroup):
-    pass
+    mean = models.CurrencyField()
+    twothirds = models.CurrencyField()
+    winningval = models.FloatField()
+    winner = models.IntegerField()
 
 
 class Player(BasePlayer):
-    guess = models.IntegerField()
+    guess = models.CurrencyField(min=0, max=Constants.endowment)
+    winner = models.BooleanField()

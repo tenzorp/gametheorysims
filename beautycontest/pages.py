@@ -10,27 +10,27 @@ class Main(Page):
     form_fields = ['guess']
 
 
-"""
 class ResultsWaitPage(WaitPage):
     def after_all_players_arrive(self):
-        for p in self.group.get_players():
-            p.set_payoff()
-"""
+        players = self.group.get_players()
+        win = [p.guess for p in players]
+        self.group.mean = sum(win) / len(players)
+        self.group.twothirds = self.group.mean * (2/3)
+        self.group.winningval = min(win, key=lambda x: x-self.group.twothirds)
+        for p in players:
+            if self.group.winningval == p.guess:
+                p.winner = True
+                self.group.winner = p.id_in_group
+
 
 
 class Result(Page):
-    def vars_for_template(self):
-        me = self.player
-        opponent = me.other_player()
-        return {
-            'my_decision': me.decision,
-            'opponent_decision': opponent.decision,
-            'same_choice': me.decision == opponent.decision,
-        }
+    pass
 
 
 page_sequence = [
     Introduction,
     Main,
+    ResultsWaitPage,
     Result
 ]
