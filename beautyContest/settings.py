@@ -13,11 +13,11 @@ SESSION_CONFIG_DEFAULTS = {
 
 SESSION_CONFIGS = [
     {
-        'name': 'beautycontest',
-        'display_name': "Beauty Contest",
-        'num_demo_participants': None,
-        'app_sequence': ['beautycontest'],
-    }
+       'name': 'beautyContest',
+       'display_name': "Beauty Contest",
+       'num_demo_participants': 3,
+       'app_sequence': ['beautyContest'],
+    },
 ]
 
 
@@ -28,13 +28,19 @@ REAL_WORLD_CURRENCY_DECIMAL_PLACES = 3
 POINTS_DECIMAL_PLACES = 3
 USE_POINTS = True
 
-ROOMS = []
+ROOMS = [
+    {
+        'name': 'class',
+        'display_name': 'Class',
+    }
+]
 
 ADMIN_USERNAME = 'admin'
 # for security, best to set admin password in an environment variable
 ADMIN_PASSWORD = environ.get('OTREE_ADMIN_PASSWORD')
 
-DEMO_PAGE_INTRO_HTML = """ """
+DEMO_PAGE_INTRO_HTML = "<h1>Active Sessions</h1>"
+
 
 SECRET_KEY = '23b=-4m+s(=9s+r#5vbql+d#o_44)f-ya7zq0%3esza_gn7icq'
 

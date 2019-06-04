@@ -16,7 +16,7 @@ class Constants(BaseConstants):
     players_per_group = None
     num_rounds = 1
 
-    instructions_template = 'beautycontest/instructions.html'
+    instructions_template = 'beautyContest/instructions.html'
 
     endowment = c(100)
 
@@ -29,7 +29,7 @@ class Subsession(BaseSubsession):
 class Group(BaseGroup):
     mean = models.CurrencyField()
     twothirds = models.CurrencyField()
-    winningval = models.FloatField()
+    winningval = models.CurrencyField()
     winner = models.IntegerField()
 
 
