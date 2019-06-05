@@ -13,17 +13,24 @@ SESSION_CONFIG_DEFAULTS = {
 
 SESSION_CONFIGS = [
     {
-       'name': 'beautyContest',
-       'display_name': "Beauty Contest",
-       'num_demo_participants': 3,
-       'app_sequence': ['beautyContest'],
+        'name': 'beautyContest',
+        'display_name': "Beauty Contest",
+        'num_demo_participants': 3,
+        'app_sequence': ['beautyContest'],
     },
     {
-       'name': 'prisoner',
-       'display_name': "Prisoner's Dilemma",
-       'num_demo_participants': 2,
-       'app_sequence': ['prisoner'],
+        'name': 'prisoner',
+        'display_name': "Prisoner's Dilemma",
+        'num_demo_participants': 2,
+        'app_sequence': ['prisoner'],
     },
+    {
+        'name': 'secondPrice',
+        'display_name': "Second Price Auction",
+        'num_demo_participants': 4,
+        'app_sequence': ['secondPrice'],
+        'players_per_group': 4,
+    }
 ]
 
 
@@ -33,7 +40,12 @@ REAL_WORLD_CURRENCY_CODE = 'USD'
 USE_POINTS = True
 POINTS_DECIMAL_PLACES = 3
 
-ROOMS = []
+ROOMS = [
+    {
+        'name': 'class',
+        'display_name': 'Class',
+    }
+]
 
 ADMIN_USERNAME = 'admin'
 # for security, best to set admin password in an environment variable
