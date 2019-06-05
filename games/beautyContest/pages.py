@@ -2,7 +2,7 @@ from ._builtin import Page, WaitPage
 
 
 class Introduction(Page):
-    timeout_seconds = 100
+    timeout_seconds = 120
 
 
 class Main(Page):
@@ -24,7 +24,7 @@ class ResultsWaitPage(WaitPage):
 
 
 
-class Result(Page):
+class Results(Page):
     pass
 
 
@@ -32,5 +32,5 @@ page_sequence = [
     Introduction,
     Main,
     ResultsWaitPage,
-    Result
+    Results
 ]

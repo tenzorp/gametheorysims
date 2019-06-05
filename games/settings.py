@@ -13,19 +13,22 @@ SESSION_CONFIG_DEFAULTS = {
 
 SESSION_CONFIGS = [
     {
-       'name': 'all',
-       'display_name': "All games, sequentially",
+       'name': 'beautyContest',
+       'display_name': "Beauty Contest",
+       'num_demo_participants': 3,
+       'app_sequence': ['beautyContest'],
+    },
+    {
+       'name': 'prisoner',
+       'display_name': "Prisoner's Dilemma",
        'num_demo_participants': 2,
-       'app_sequence': ['beautyContest', 'prisoner'],
+       'app_sequence': ['prisoner'],
     },
 ]
 
 
-# ISO-639 code
-# for example: de, fr, ja, ko, zh-hans
 LANGUAGE_CODE = 'en'
 
-# e.g. EUR, GBP, CNY, JPY
 REAL_WORLD_CURRENCY_CODE = 'USD'
 USE_POINTS = True
 POINTS_DECIMAL_PLACES = 3

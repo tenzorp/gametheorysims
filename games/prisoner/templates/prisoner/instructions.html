@@ -1,0 +1,28 @@
+{% load otree %}
+
+<div class="card bg-light instructions">
+    <div class="card-body">
+        <h3>
+            Instructions
+        </h3>
+        <link rel="stylesheet" type="text/css"
+              href="{% static 'global/matrix.css' %}"/>
+        <p>
+            In this study, you will be anonymously matched with another player. You will interact
+            only via the computer and will not know which other student you are matched with.
+            Imagine that you and the other player are partners in crime and you must each decide
+            whether to confess or to remain silent. You will each make this choice independently,
+            without knowing what the other player has chosen.
+        </p>
+        <p>
+            The outcome of the game is how many years in prison each player must serve. Thus,
+            higher numbers signify worse outcomes.
+            <ul>
+                <li>If you both choose to remain silent then you each serve 1 year.</li>
+                <li>If you both choose to confess then you each serve 5 years.</li>
+                <li>If one player chooses to remain silent while the other chooses to confess then the
+        player who remained silent serves 10 years while the player who confessed serves 0 years.</li>
+            </ul>
+        </p>
+    </div>
+</div>

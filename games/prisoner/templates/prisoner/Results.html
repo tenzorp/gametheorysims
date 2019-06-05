@@ -1,13 +1,29 @@
 {% extends "global/Page.html" %}
-{% load otree static %}
+{% load otree %}
 
 {% block title %}
-    Page title
+    Results
 {% endblock %}
 
 {% block content %}
 
+    <p>
+        {% if same_choice %}
+            Both of you chose to {{ my_decision.lower }}.
+        {% else %}
+            You chose to {{ my_decision.lower }} and the other player chose to {{ opponent_decision.lower }}.
+        {% endif %}
+    </p>
+
+    <p>
+        As a result, you served {{ player.sentence }}
+            {% if player.sentence == 1 %} year.
+            {% else %} years.
+            {% endif %}
+    </p>
+
     {% next_button %}
+
+    {% include Constants.instructions_template %}
+
 {% endblock %}
-
-
