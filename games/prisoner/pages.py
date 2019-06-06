@@ -1,6 +1,4 @@
-from otree.api import Currency as c, currency_range
 from ._builtin import Page, WaitPage
-from .models import Constants
 
 
 class Introduction(Page):
@@ -20,6 +18,7 @@ class ResultsWaitPage(WaitPage):
 
 
 class Results(Page):
+
     def vars_for_template(self):
         my = self.player
         opponent = my.other_player()

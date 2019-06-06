@@ -1,0 +1,15 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Second Price Auction
+        <h3> Round {{ player.round_number }} </h3>
+{% endblock %}
+
+{% block content %}
+    {% formfields %}
+
+    {% next_button %}
+{% endblock %}
+
+

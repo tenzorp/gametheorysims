@@ -24,6 +24,8 @@ class Constants(BaseConstants):
     players_per_group = None
     num_rounds = 3
 
+    instructions_template = 'secondPrice/instructions.html'
+
 
 class Subsession(BaseSubsession):
     def creating_session(self):
@@ -37,19 +39,33 @@ class Subsession(BaseSubsession):
 
 class Group(BaseGroup):
     highestBid = models.CurrencyField()
+    secondHighest = models.CurrencyField()
 
     def set_winner(self):
         players = self.get_players()
-        self.highestBid = max([p.bid for p in players])
-
-        tiedPlayers = [p for p in players if p.bid == self.highestBid]
-        winner = random.choice(tiedPlayers)
+        bids = [p.bid for p in players]
+        bids.sort()
+        self.highestBid = bids[-1]
+        self.secondHighest = bids[-2]
+        tiedWinners = [p for p in players if p.bid == self.highestBid]
+        winner = random.choice(tiedWinners)
         winner.isWinner = True
 
 
 class Player(BasePlayer):
-    valOne = models.CurrencyField()
-    valTwo = models.CurrencyField()
-    valThree = models.CurrencyField()
+    round_1 = models.CurrencyField()
+    round_2 = models.CurrencyField()
+    round_3 = models.CurrencyField()
     bid = models.CurrencyField()
     isWinner = models.BooleanField(initial=False)
+
+    def set_payoff(self):
+        if self.isWinner:
+            if self.round_number == 1:
+                self.payoff = self.round_1 - self.group.secondHighest
+            elif self.round_number == 2:
+                self.payoff = self.round_2 - self.group.secondHighest
+            elif self.round_number == 3:
+                self.payoff = self.round_3 - self.group.secondHighest
+        else:
+            self.payoff = c(0)

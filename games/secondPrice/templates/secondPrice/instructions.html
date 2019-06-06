@@ -1,0 +1,31 @@
+{% load otree %}
+
+<div class="card bg-light instructions">
+    <div class="card-body">
+        <h3>
+            Instructions
+        </h3>
+        <link rel="stylesheet" type="text/css"
+              href="{% static 'global/matrix.css' %}"/>
+        <p>
+            In this game, you will participate in a series of auctions in small groups. In each auction,
+            you will bid on a fictitious item, which has some value to you. This value will be different
+            for different participants. In each round, each group member will simultaneously write down
+            a bid for the item. You will then compare your bid with those of your group members. The
+            person with the highest bid wins and earns their value. However, they still need to pay a
+            price for the item. The price the winner pays is equal to the second highest bid in the group.
+            The winner’s payoff is equal to their value minus this price. The payoff of those who do not
+            win is zero.
+        </p>
+        <p>
+            You will participate in three auctions and your value for the item will vary across auction rounds.
+            <ul>
+                <li>In the first round, your value is equal to the last two digits of your cellphone
+                number. </li>
+                <li>In the second round, your value is equal to your DOB (the day of the month).</li>
+                <li>In the third round, your value is equal to the last two digits of your campus
+                mailbox or street number.</li>
+            </ul>
+        </p>
+    </div>
+</div>

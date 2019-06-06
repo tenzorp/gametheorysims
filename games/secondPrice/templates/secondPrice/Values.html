@@ -1,0 +1,18 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    Second Price Auction
+{% endblock %}
+
+{% block content %}
+
+    Please enter your values for the following rounds.
+
+    {% formfield player.round_1 label="Last two digits of your phone number:"%}
+    {% formfield player.round_2 label="Date of birth (day of the month):"%}
+    {% formfield player.round_3 label="Last two digits of your campus mailbox or street address:"%}
+
+    {% next_button %}
+
+{% endblock %}
