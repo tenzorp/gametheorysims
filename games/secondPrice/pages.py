@@ -4,6 +4,11 @@ from .models import Constants
 
 
 class Introduction(Page):
+    # oTree collects participant ip addresses by default and I think that's
+    # creepy and unnecessary
+    def clear(self):
+        self.player.participant.ip_address = None
+
     def is_displayed(self):
         return self.player.round_number == 1
 
@@ -32,10 +37,14 @@ class ResultsWaitPage(WaitPage):
 class Results(Page):
     def vars_for_template(self):
         my = self.player
+        group = self.group
         return {
             'bid': my.bid,
-            'winner': my.isWinner,
-            'payoff': my.payoff
+            'isWinner': my.isWinner,
+            'payoff': my.payoff,
+            'winner': group.winner,
+            'winningBid': group.highestBid,
+            'paidBid': group.secondHighest
         }
 
 

@@ -1,6 +1,6 @@
 from otree.api import (
-    models, widgets, BaseConstants, BaseSubsession, BaseGroup, BasePlayer,
-    Currency as c, currency_range
+    models, BaseConstants, BaseSubsession, BaseGroup, BasePlayer,
+    Currency as c
 )
 import random
 
@@ -23,7 +23,6 @@ class Constants(BaseConstants):
     name_in_url = 'secondPrice'
     players_per_group = None
     num_rounds = 3
-
     instructions_template = 'secondPrice/instructions.html'
 
 
@@ -40,6 +39,7 @@ class Subsession(BaseSubsession):
 class Group(BaseGroup):
     highestBid = models.CurrencyField()
     secondHighest = models.CurrencyField()
+    winner = models.StringField()
 
     def set_winner(self):
         players = self.get_players()
@@ -47,16 +47,16 @@ class Group(BaseGroup):
         bids.sort()
         self.highestBid = bids[-1]
         self.secondHighest = bids[-2]
-        tiedWinners = [p for p in players if p.bid == self.highestBid]
-        winner = random.choice(tiedWinners)
-        winner.isWinner = True
+        tiedWinners = [p.participant for p in players if p.bid == self.highestBid]
+        self.winner = random.choice(tiedWinners)
+        self.winner.isWinner = True
 
 
 class Player(BasePlayer):
-    round_1 = models.CurrencyField()
-    round_2 = models.CurrencyField()
-    round_3 = models.CurrencyField()
-    bid = models.CurrencyField()
+    round_1 = models.CurrencyField(min=0, max=99)
+    round_2 = models.CurrencyField(min=0, max=31)
+    round_3 = models.CurrencyField(min=0, max=99)
+    bid = models.CurrencyField(min=0)
     isWinner = models.BooleanField(initial=False)
 
     def set_payoff(self):
