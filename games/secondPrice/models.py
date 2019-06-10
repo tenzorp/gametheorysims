@@ -37,19 +37,20 @@ class Subsession(BaseSubsession):
 
 
 class Group(BaseGroup):
-    highestBid = models.CurrencyField()
-    secondHighest = models.CurrencyField()
-    winner = models.StringField()
+    highest = models.CurrencyField()
+    second = models.CurrencyField()
+    winner = models.IntegerField()
 
     def set_winner(self):
         players = self.get_players()
         bids = [p.bid for p in players]
         bids.sort()
-        self.highestBid = bids[-1]
-        self.secondHighest = bids[-2]
-        tiedWinners = [p.participant for p in players if p.bid == self.highestBid]
-        self.winner = random.choice(tiedWinners)
-        self.winner.isWinner = True
+        self.highest = bids[-1]
+        self.second = bids[-2]
+        tied = [p.id_in_group for p in players if p.bid == self.highest]
+        self.winner = random.choice(tied)
+        winner = self.get_player_by_id(self.winner)
+        winner.isWinner = True
 
 
 class Player(BasePlayer):
@@ -62,10 +63,11 @@ class Player(BasePlayer):
     def set_payoff(self):
         if self.isWinner:
             if self.round_number == 1:
-                self.payoff = self.round_1 - self.group.secondHighest
+                self.payoff = self.round_1 - self.group.second
             elif self.round_number == 2:
-                self.payoff = self.round_2 - self.group.secondHighest
+                self.payoff = self.round_2 - self.group.second
             elif self.round_number == 3:
-                self.payoff = self.round_3 - self.group.secondHighest
+                self.payoff = self.round_3 - self.group.second
         else:
             self.payoff = c(0)
+

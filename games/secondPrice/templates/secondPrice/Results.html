@@ -2,21 +2,25 @@
 {% load otree static %}
 
 {% block title %}
-    Page title
+    Results
 {% endblock %}
 
 {% block content %}
     {% if isWinner %}
         You won!
+        <p>
+            Your bid was {{ bid }} and the second-highest bid was {{ paidBid }}. With a value of
+            {{ winnerVal }}, your payoff for this round is {{ myPayoff }}.
+        </p>
     {% else %}
         You did not win.
+        <p>
+            Your bid was {{ bid }} and your payoff for this round is 0.
+            The winner was Player {{ winner }} with a bid of {{ winningBid }}. They earned a value
+            of {{ winnerVal }} and paid the second-highest bid of {{ paidBid }}, resulting in a payoff
+            of {{ winnerPayoff }}.
+        </p>
     {% endif %}
-
-    <p>
-        The winner was {{ winner }} with a bid of {{ winningBid }}. They earned a value
-        of  and paid the second-highest bid of {{ paidBid }}, resulting in a payoff
-        of .
-    </p>
 
     {% next_button %}
 {% endblock %}
