@@ -33,20 +33,19 @@ class ResultsWaitPage(WaitPage):
 
 class Results(Page):
     def vars_for_template(self):
-        me = self.player
         group = self.group
         winner = group.get_player_by_id(group.winner)
         values = [winner.round_1, winner.round_2, winner.round_3]
         return {
-            'isWinner': me.isWinner,
-            'bid': me.bid,
-            'myPayoff': me.payoff,
             'winner': winner.participant.id_in_session,
-            'winningBid': group.highest,
-            'paidBid': group.second,
             'winnerPayoff': winner.payoff,
             'winnerVal': values[group.round_number - 1]
         }
+
+
+class Final(Page):
+    def is_displayed(self):
+        return self.player.round_number == 3
 
 
 page_sequence = [
@@ -54,5 +53,6 @@ page_sequence = [
     Values,
     Main,
     ResultsWaitPage,
-    Results
+    Results,
+    Final
 ]

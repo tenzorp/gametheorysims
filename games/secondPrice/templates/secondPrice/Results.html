@@ -6,18 +6,18 @@
 {% endblock %}
 
 {% block content %}
-    {% if isWinner %}
+    {% if player.isWinner %}
         You won!
         <p>
-            Your bid was {{ bid }} and the second-highest bid was {{ paidBid }}. With a value of
-            {{ winnerVal }}, your payoff for this round is {{ myPayoff }}.
+            Your bid was {{ player.bid }} and the second-highest bid was {{ group.second }}. With a value of
+            {{ winnerVal }}, your payoff for this round is {{ player.payoff }}.
         </p>
     {% else %}
         You did not win.
         <p>
-            Your bid was {{ bid }} and your payoff for this round is 0.
-            The winner was Player {{ winner }} with a bid of {{ winningBid }}. They earned a value
-            of {{ winnerVal }} and paid the second-highest bid of {{ paidBid }}, resulting in a payoff
+            Your bid was {{ player.bid }} and your payoff for this round is 0.
+            The winner was Player {{ winner }} with a bid of {{ group.highest }}. They earned a value
+            of {{ winnerVal }} and paid the second-highest bid of {{ group.second }}, resulting in a payoff
             of {{ winnerPayoff }}.
         </p>
     {% endif %}

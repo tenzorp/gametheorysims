@@ -1,0 +1,32 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    Results
+{% endblock %}
+
+{% block content %}
+    <table class='table table-bordered text-center'
+           style='width: auto; margin: auto'>
+        <tr>
+            <th colspan=13 rowspan=2></th>
+            <th colspan=4>Round 1</th>
+            <th colspan=4>Round 2</th>
+            <th colspan=4>Round 3</th>
+            <th colspan=1>Total</th>
+        </tr>
+        <tr>
+            <th>Value</th>
+            <th>Bid</th>
+            <th>Payoff</th>
+        </tr>
+        <tr>
+            <th colspan=1 rowspan=1>P1</th>
+            <th colspan=1 rowspan=1>P2</th>
+            <th colspan=1 rowspan=1>P3</th>
+            <th colspan=1 rowspan=1>P4</th>
+        </tr>
+    </table>
+
+    {% next_button %}
+{% endblock %}

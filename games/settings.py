@@ -26,9 +26,9 @@ SESSION_CONFIGS = [
     {
         'name': 'secondPrice',
         'display_name': "Second Price Auction",
-        'num_demo_participants': 4,
+        'num_demo_participants': 2,
         'app_sequence': ['secondPrice'],
-        'players_per_group': 4,
+        'players_per_group': 2,
     }
 ]
 
