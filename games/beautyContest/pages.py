@@ -23,7 +23,6 @@ class ResultsWaitPage(WaitPage):
                 self.group.winner = p.id_in_group
 
 
-
 class Results(Page):
     pass
 

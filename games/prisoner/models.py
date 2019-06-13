@@ -40,7 +40,6 @@ class Group(BaseGroup):
 class Player(BasePlayer):
     decision = models.StringField(
         choices=['Confess', 'Remain silent'],
-        doc="""This player's decision""",
         widget=widgets.RadioSelect
     )
     sentence = models.IntegerField()

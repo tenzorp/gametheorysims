@@ -1,7 +1,5 @@
 from otree.api import (
-    models, BaseConstants, BaseSubsession, BaseGroup, BasePlayer,
-    Currency as c
-)
+    models, BaseConstants, BaseSubsession, BaseGroup, BasePlayer)
 
 
 """
@@ -17,9 +15,7 @@ class Constants(BaseConstants):
     num_rounds = 1
 
     instructions_template = 'beautyContest/instructions.html'
-
-    endowment = c(100)
-
+    endowment = 100
 
 
 class Subsession(BaseSubsession):
@@ -27,12 +23,16 @@ class Subsession(BaseSubsession):
 
 
 class Group(BaseGroup):
-    mean = models.CurrencyField()
-    twothirds = models.CurrencyField()
-    winningval = models.CurrencyField()
+    mean = models.FloatField()
+    twothirds = models.FloatField()
+    winningval = models.FloatField()
     winner = models.IntegerField()
 
 
 class Player(BasePlayer):
-    guess = models.CurrencyField(min=0, max=Constants.endowment)
+    guess = models.FloatField(min=0, max=Constants.endowment)
     winner = models.BooleanField()
+
+    def guess_error_message(self, value):
+        if str(value)[::-1].find('.') > 3:
+            return 'Up to 3 decimal places are allowed'
