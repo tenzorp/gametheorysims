@@ -2,11 +2,20 @@
 {% load otree static %}
 
 {% block title %}
-    Page title
+    Results: Round {{ player.round_number }}
 {% endblock %}
 
 {% block content %}
-
+     <p>
+        {% if same_price %}
+            Both of you chose a price of ${{ player.choice }}.
+        {% else %}
+            You chose a price of ${{ player.choice }} and the other player chose a price of ${{ opponent_price }}.
+        {% endif %}
+    </p>
+    <p>
+        As a result, you earned {{ player.payoff }} and your opponent earned {{ opponent_payoff }}.
+    </p>
     {% next_button %}
 {% endblock %}
 

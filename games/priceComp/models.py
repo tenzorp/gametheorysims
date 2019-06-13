@@ -26,33 +26,36 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
-    choice = models.CurrencyField(
-        choices=[c(1), c(2), c(3)],
-        widget=widgets.RadioSelect)
+    choice = models.IntegerField(
+        choices=[
+            [1, c(1)],
+            [2, c(2)],
+            [3, c(3)],
+        ], widget=widgets.RadioSelect)
 
     def other_player(self):
         return self.get_others_in_group()[0]
 
     def set_payoff(self):
         payoff = {
-            c(1):
+            1:
                 {
-                    c(1): c(6),
-                    c(2): c(15),
-                    c(3): c(15)
+                    1: 6,
+                    2: 15,
+                    3: 15
                 },
-            c(2):
+            2:
                 {
-                    c(1): c(0),
-                    c(2): c(9),
-                    c(3): c(18)
+                    1: 0,
+                    2: 9,
+                    3: 18
                 },
-            c(3):
+            3:
                 {
-                    c(1): c(0),
-                    c(2): c(0),
-                    c(3): c(12)
+                    1: 0,
+                    2: 0,
+                    3: 12
                 }
         }
 
-        self.payoff = payoff[self.choice][self.other_player().choice]
+        self.payoff = c(payoff[self.choice][self.other_player().choice])

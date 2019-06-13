@@ -28,7 +28,13 @@ SESSION_CONFIGS = [
         'display_name': "Second Price Auction",
         'num_demo_participants': 2,
         'app_sequence': ['secondPrice'],
-        'players_per_group': 2,
+        'players_per_group': 3,
+    },
+    {
+        'name': 'priceComp',
+        'display_name': "Price Competition",
+        'num_demo_participants': 2,
+        'app_sequence': ['priceComp']
     }
 ]
 

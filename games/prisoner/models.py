@@ -1,6 +1,5 @@
 from otree.api import (
-    models, widgets, BaseConstants, BaseSubsession, BaseGroup, BasePlayer,
-    Currency as c
+    models, widgets, BaseConstants, BaseSubsession, BaseGroup, BasePlayer
 )
 
 

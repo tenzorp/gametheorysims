@@ -1,0 +1,15 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    Price Competition
+{% endblock %}
+
+{% block content %}
+
+
+    {% formfield player.choice label="Please choose your product's price." %}
+
+    {% next_button %}
+
+{% endblock %}
