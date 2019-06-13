@@ -1,0 +1,25 @@
+{% load otree %}
+
+<div class="card bg-light instructions">
+    <div class="card-body">
+        <h3>
+            Instructions
+        </h3>
+        <link rel="stylesheet" type="text/css"
+              href="{% static 'global/matrix.css' %}"/>
+        <p>
+            In this study, you will be anonymously matched with another player. You will interact
+            only via the computer and will not know which other student you are matched with.
+            Each player represents a separate firm. Your job is to choose the price for your product:
+            either $1, $2, or $3. Your payoff will depend on your choice and whether your partner chose
+            an equal, lower, or higher price. If you make sales, your payoff is higher when you choose
+            a higher price. You will learn of your partner's decision after both of you have chosen
+            a price.
+            <ul>
+                <li>If you both choose the same price, you will split the market</li>
+                <li>If you choose different prices, the player who chose the lower price will earn
+                    all of the sales and the other player will make zero sales.</li>
+            </ul>
+        </p>
+    </div>
+</div>
