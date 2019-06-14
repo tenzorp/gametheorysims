@@ -11,7 +11,7 @@ Your app description
 class Constants(BaseConstants):
     name_in_url = 'frontrunner'
     players_per_group = 2
-    num_rounds = 3
+    num_rounds = 5
 
     instructions_template = 'frontrunner/instructions.html'
     role = random.choice([1, 2])
@@ -46,6 +46,7 @@ class Player(BasePlayer):
 
     def set_payoff(self):
         if self.role() == 'Column':
+            # had to define two here rather than one bc not symmetrical like the other
             payoff = {
                 'Challenge':
                     {

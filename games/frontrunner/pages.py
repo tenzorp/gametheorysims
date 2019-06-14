@@ -22,12 +22,33 @@ class ResultsWaitPage(WaitPage):
 
 
 class Results(Page):
-    pass
+    def vars_for_template(self):
+        opponent = self.player.other_player()
+        return {
+            'opponent_choice': opponent.choice,
+            'opponent_payoff': opponent.payoff
+        }
+
+
+class Final(Page):
+
+    def is_displayed(self):
+        return self.round_number == 5
+
+    def vars_for_template(self):
+        opponent = self.player.other_player()
+        my_total = sum([p.payoff for p in self.player.in_all_rounds()])
+        opponent_total = sum([p.payoff for p in opponent.in_all_rounds()])
+        return {
+            'my_payoff': my_total,
+            'opponent_payoff': opponent_total
+        }
 
 
 page_sequence = [
     Introduction,
     Main,
     ResultsWaitPage,
-    Results
+    Results,
+    Final
 ]
