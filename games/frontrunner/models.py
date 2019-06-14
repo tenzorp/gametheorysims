@@ -1,10 +1,10 @@
 from otree.api import (
     models, widgets, BaseConstants, BaseSubsession, BaseGroup, BasePlayer)
-
 import random
 
 """
-Your app description
+Sim for 'Frontrunner - Challenger' game. Players are matched randomly and must choose a political platform or reaction
+to their opponent's political platform.
 """
 
 
@@ -38,7 +38,7 @@ class Player(BasePlayer):
     def role(self):
         if self.id_in_group == Constants.role:
             return 'Row'
-        if self.id_in_group != Constants.role:
+        else:
             return 'Column'
 
     def other_player(self):

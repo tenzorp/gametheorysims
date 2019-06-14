@@ -1,0 +1,24 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Final Results
+{% endblock %}
+
+{% block content %}
+    <p>
+        {% if my_payoff > opponent_payoff %}
+            You won!
+        {% else %}
+            You did not win.
+        {% endif %}
+    </p>
+
+     <p>
+         After 5 rounds, your total payoff is {{ my_payoff }} and your opponent's total payoff is
+         {{ opponent_payoff }}.
+
+    </p>
+    {% next_button %}
+{% endblock %}
+

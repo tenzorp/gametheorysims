@@ -1,0 +1,73 @@
+{% load otree %}
+
+<div class="card bg-light instructions">
+    <div class="card-body">
+        <h3>
+            Instructions
+        </h3>
+        <link rel="stylesheet" type="text/css"
+              href="{% static 'global/matrix.css' %}"/>
+        <p>
+            In this study, you will be anonymously matched with another player. You will interact only via the computer
+            and will not know which other student you are matched with. Each player will be randomly assigned a role:
+            Row or Column. You will each simultaneously choose between four possible playing cards: Joker, Ace, Two, or
+            Three. One player will then win 5 points while the other loses 5 points. Who wins and who loses depends on
+            the combination of cards chosen. You will learn of the other player's decisions after both of you have made
+            your choices.
+            <p>
+                The Row Player wins if both players choose Joker or if neither player chooses Joker and the cards
+                mismatch.
+            </p>
+            <p> The Column Player wins if exactly one player chooses the Joker or if neither player chooses Joker and
+                the cards match.
+            </p>
+
+            <table class="table table-md table-bordered">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th colspan="5" scope="col" class="text-center">Column<br></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th rowspan="5" scope="row" class="align-middle text-center">Row</th>
+                        <td></td>
+                            <td>Joker</td>
+                            <td>Ace</td>
+                            <td>Two</td>
+                            <td>Three</td>
+                    </tr>
+                    <tr>
+                        <td>Joker</td>
+                            <td>(5, -5)</td>
+                            <td>(-5, 5)</td>
+                            <td>(-5, 5)</td>
+                            <td>(-5, 5)</td>
+                    </tr>
+                    <tr>
+                        <td>Ace</td>
+                            <td>(-5, 5)</td>
+                            <td>(-5, 5)</td>
+                            <td>(5, -5)</td>
+                            <td>(5, -5)</td>
+                    </tr>
+                    <tr>
+                        <td>Two</td>
+                            <td>(-5, 5)</td>
+                            <td>(5, -5)</td>
+                            <td>(-5, 5)</td>
+                            <td>(5, -5)</td>
+                    </tr>
+                    <tr>
+                        <td>Three</td>
+                            <td>(-5, 5)</td>
+                            <td>(5, -5)</td>
+                            <td>(5, -5)</td>
+                            <td>(-5, 5)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </p>
+    </div>
+</div>

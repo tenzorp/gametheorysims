@@ -41,7 +41,13 @@ SESSION_CONFIGS = [
         'display_name': 'Frontrunner - Challenger',
         'num_demo_participants': 2,
         'app_sequence': ['frontrunner']
-    }
+    },
+    {
+        'name': 'oneill',
+        'display_name': "O'Neill Game",
+        'num_demo_participants': 2,
+        'app_sequence': ['oneill']
+    },
 ]
 
 

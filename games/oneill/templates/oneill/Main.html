@@ -2,10 +2,13 @@
 {% load otree static %}
 
 {% block title %}
-    Page title
+    O'Neill Game
 {% endblock %}
 
 {% block content %}
+
+    <p> You are the {{ player.role }} Player.</p>
+    {% formfield player.choice label="Please choose your card." %}
 
     {% next_button %}
 
