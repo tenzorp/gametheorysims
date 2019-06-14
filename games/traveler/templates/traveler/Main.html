@@ -2,11 +2,12 @@
 {% load otree static %}
 
 {% block title %}
-    Page title
+    Traveler's Dilemma
 {% endblock %}
 
 {% block content %}
 
-    {% next_button %}
+    {% formfield player.claim label="Please enter a claim between 80 and 200 cents." %}
 
+    {% next_button %}
 {% endblock %}

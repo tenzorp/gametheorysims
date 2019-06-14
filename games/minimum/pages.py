@@ -14,7 +14,7 @@ class ResultsWaitPage(WaitPage):
 
 
 class Results(Page):
-    pass
+    timeout_seconds = 30
 
 
 page_sequence = [

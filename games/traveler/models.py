@@ -1,20 +1,19 @@
 from otree.api import (
-    models, widgets, BaseConstants, BaseSubsession, BaseGroup, BasePlayer,
-    Currency as c, currency_range
-)
+    models, BaseConstants, BaseSubsession, BaseGroup, BasePlayer)
 
 
-author = 'Your name here'
-
-doc = """
-Your app description
+"""
+Sim for "Traveler's Dilemma" game. Each player chooses a price and wins or loses money dependent on
+their partner's choice.
 """
 
 
 class Constants(BaseConstants):
     name_in_url = 'traveler'
-    players_per_group = None
-    num_rounds = 1
+    players_per_group = 2
+    num_rounds = 3
+
+    instructions_template = 'traveler/instructions.html'
 
 
 class Subsession(BaseSubsession):
@@ -26,4 +25,15 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
-    pass
+    claim = models.IntegerField(min=80, max=200)
+
+    def other_player(self):
+        return self.get_others_in_group()[0]
+
+    def set_payoff(self):
+        if self.claim == self.other_player().claim:
+            self.payoff = self.claim
+        elif self.claim > self.other_player().claim:
+            self.payoff = self.other_player().claim - 10
+        else:
+            self.payoff = self.claim + 10

@@ -9,12 +9,14 @@
     <p>
         {% if player.role == 'Row' %}
             Your chosen platform was {{ player.choice.lower }}. Your opponent chose to {{ opponent_choice.lower }}
-            your platform. Thus, your payoff is {{ player.payoff }} and your opponent's is {{ opponent_payoff }}.
+            your platform. Thus, your payoff is {{ player_payoff }} points and your opponent's is {{ opponent_payoff }}
+            points.
         {% else %}
             You chose to {{ player.choice.lower }} your opponent's {{ opponent_choice.lower }} platform. Thus, your
-            payoff is {{ player.payoff }} and your opponent's is {{ opponent_payoff }}.
+            payoff is {{ player_payoff }} points and your opponent's is {{ opponent_payoff }} points.
         {% endif %}
     </p>
+
     {% next_button %}
 {% endblock %}
 

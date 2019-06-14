@@ -2,10 +2,14 @@
 {% load otree static %}
 
 {% block title %}
-    Page title
+    Results: Period {{ player.round_number }}
 {% endblock %}
 
 {% block content %}
+    <p>
+        Your claim was {{ player.claim }} cents and your opponent's was {{ opponent_claim }} cents. Thus, your payoff is
+        {{ player_payoff }} cents and your opponent's is {{ opponent_payoff }} cents.
+    </p>
 
     {% next_button %}
 {% endblock %}

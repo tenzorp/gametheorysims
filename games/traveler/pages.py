@@ -3,22 +3,55 @@ from ._builtin import Page, WaitPage
 from .models import Constants
 
 
-class MyPage(Page):
-    pass
+class Introduction(Page):
+
+    def is_displayed(self):
+        return self.player.round_number == 1
+
+
+class Main(Page):
+    form_model = 'player'
+    form_fields = ['claim']
 
 
 class ResultsWaitPage(WaitPage):
 
     def after_all_players_arrive(self):
-        pass
+        for p in self.group.get_players():
+            p.set_payoff()
 
 
 class Results(Page):
-    pass
+    timeout_seconds = 30
+
+    def vars_for_template(self):
+        opponent = self.player.other_player()
+        return {
+            'player_payoff': int(self.player.payoff),
+            'opponent_claim': opponent.claim,
+            'opponent_payoff': int(opponent.payoff)
+        }
+
+
+class Final(Page):
+
+    def is_displayed(self):
+        return self.round_number == 3
+
+    def vars_for_template(self):
+        opponent = self.player.other_player()
+        my_total = int(sum([p.payoff for p in self.player.in_all_rounds()]))
+        opponent_total = int(sum([p.payoff for p in opponent.in_all_rounds()]))
+        return {
+            'my_payoff': my_total,
+            'opponent_payoff': opponent_total
+        }
 
 
 page_sequence = [
-    MyPage,
+    Introduction,
+    Main,
     ResultsWaitPage,
-    Results
+    Results,
+    Final
 ]

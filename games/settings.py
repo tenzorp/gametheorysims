@@ -48,6 +48,12 @@ SESSION_CONFIGS = [
         'num_demo_participants': 2,
         'app_sequence': ['oneill']
     },
+    {
+        'name': 'traveler',
+        'display_name': "Traveler's Dilemma",
+        'num_demo_participants': 2,
+        'app_sequence': ['traveler']
+    },
 ]
 
 

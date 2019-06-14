@@ -9,6 +9,8 @@
     <p>
         {% if my_payoff > opponent_payoff %}
             You won!
+        {% elif my_payoff == opponent_payoff %}
+            You tied!
         {% else %}
             You did not win.
         {% endif %}

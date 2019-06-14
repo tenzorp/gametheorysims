@@ -20,12 +20,14 @@ class ResultsWaitPage(WaitPage):
 
 
 class Results(Page):
+    timeout_seconds = 30
 
     def vars_for_template(self):
         opponent = self.player.other_player()
         return {
+            'player_payoff': int(self.player.payoff),
             'opponent_choice': opponent.choice,
-            'opponent_payoff': opponent.payoff
+            'opponent_payoff': int(opponent.payoff)
         }
 
 
@@ -36,8 +38,8 @@ class Final(Page):
 
     def vars_for_template(self):
         opponent = self.player.other_player()
-        my_total = sum([p.payoff for p in self.player.in_all_rounds()])
-        opponent_total = sum([p.payoff for p in opponent.in_all_rounds()])
+        my_total = int(sum([p.payoff for p in self.player.in_all_rounds()]))
+        opponent_total = int(sum([p.payoff for p in opponent.in_all_rounds()]))
         return {
             'my_payoff': my_total,
             'opponent_payoff': opponent_total
