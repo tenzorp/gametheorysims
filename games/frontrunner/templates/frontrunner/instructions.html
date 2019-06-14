@@ -1,0 +1,61 @@
+{% load otree %}
+
+<div class="card bg-light instructions">
+    <div class="card-body">
+        <h3>
+            Instructions
+        </h3>
+        <link rel="stylesheet" type="text/css"
+              href="{% static 'global/matrix.css' %}"/>
+        <p>
+            In this study, you will be anonymously matched with another player. You will interact
+            only via the computer and will not know which other student you are matched with.
+            Each player will be randomly assigned a role: Row or Column. You can think of the two
+            players as competing politicians. The Row player's job is to choose a political platform:
+            “Extreme,” “Moderate,” or “Vague.” The Column player's job is to choose how to address
+            the row player: "Challenge," "Ignore," or "Praise." You will learn of the other player's
+            decisions after both of you have made your choices.
+            <p>
+                Based on the decisions you each make, one player will gain in the polls while the
+                other player experiences an equivalent loss in the polls. The payoffs reflect the
+                changes in the polls.
+            </p>
+
+            <table class="table table-md table-bordered">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th colspan="4" scope="col" class="text-center">Column<br></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th rowspan="4" scope="row" class="align-middle text-center">Row</th>
+                        <td></td>
+                            <td>Challenge</td>
+                            <td>Ignore</td>
+                            <td>Praise</td>
+                    </tr>
+                    <tr>
+                        <td>Extreme</td>
+                            <td>(10, -10)</td>
+                            <td>(-5, 5)</td>
+                            <td>(0, 0)</td>
+                    </tr>
+                    <tr>
+                        <td>Moderate</td>
+                            <td>(0, 0)</td>
+                            <td>(7, -7)</td>
+                            <td>(1, -1)</td>
+                    </tr>
+                    <tr>
+                        <td>Vague</td>
+                            <td>(4, -4)</td>
+                            <td>(3, -3)</td>
+                            <td>(2, -2)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </p>
+    </div>
+</div>

@@ -13,7 +13,7 @@ SESSION_CONFIG_DEFAULTS = {
 SESSION_CONFIGS = [
     {
         'name': 'beautyContest',
-        'display_name': "Beauty Contest",
+        'display_name': 'Beauty Contest',
         'num_demo_participants': 3,
         'app_sequence': ['beautyContest'],
     },
@@ -25,16 +25,22 @@ SESSION_CONFIGS = [
     },
     {
         'name': 'secondPrice',
-        'display_name': "Second Price Auction",
+        'display_name': 'Second Price Auction',
         'num_demo_participants': 2,
         'app_sequence': ['secondPrice'],
         'players_per_group': 3,
     },
     {
         'name': 'priceComp',
-        'display_name': "Price Competition",
+        'display_name': 'Price Competition',
         'num_demo_participants': 2,
         'app_sequence': ['priceComp']
+    },
+    {
+        'name': 'frontrunner',
+        'display_name': 'Frontrunner - Challenger',
+        'num_demo_participants': 2,
+        'app_sequence': ['frontrunner']
     }
 ]
 

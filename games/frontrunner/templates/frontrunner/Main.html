@@ -1,0 +1,18 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Frontrunner - Challenger Game
+{% endblock %}
+
+{% block content %}
+
+    {% if player.role == 'Row' %}
+        {% formfield player.choice label="Please choose your platform." %}
+    {% else %}
+        {% formfield player.choice label="Please choose your action." %}
+    {% endif %}
+
+    {% next_button %}
+
+{% endblock %}
