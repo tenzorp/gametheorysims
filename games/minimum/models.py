@@ -1,20 +1,18 @@
 from otree.api import (
-    models, widgets, BaseConstants, BaseSubsession, BaseGroup, BasePlayer,
-    Currency as c, currency_range
-)
+    models, BaseConstants, BaseSubsession, BaseGroup, BasePlayer)
 
 
-author = 'Your name here'
-
-doc = """
-Your app description
+"""
+Sim for "Minimum Effort Game"
 """
 
 
 class Constants(BaseConstants):
     name_in_url = 'minimum'
-    players_per_group = None
-    num_rounds = 1
+    players_per_group = 5
+    num_rounds = 3
+
+    instructions_template = 'minimum/instructions.html'
 
 
 class Subsession(BaseSubsession):
@@ -22,8 +20,11 @@ class Subsession(BaseSubsession):
 
 
 class Group(BaseGroup):
-    pass
+    min = models.IntegerField()
 
 
 class Player(BasePlayer):
-    pass
+    effort = models.IntegerField(min=1, max=5)
+
+    def set_payoff(self):
+        self.payoff = 5 * self.group.min - self.effort

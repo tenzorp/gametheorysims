@@ -11,7 +11,7 @@ their partner's choice.
 class Constants(BaseConstants):
     name_in_url = 'traveler'
     players_per_group = 2
-    num_rounds = 3
+    num_rounds = 10
 
     instructions_template = 'traveler/instructions.html'
 

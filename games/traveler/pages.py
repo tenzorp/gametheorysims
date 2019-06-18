@@ -1,6 +1,4 @@
-from otree.api import Currency as c, currency_range
 from ._builtin import Page, WaitPage
-from .models import Constants
 
 
 class Introduction(Page):
@@ -36,7 +34,7 @@ class Results(Page):
 class Final(Page):
 
     def is_displayed(self):
-        return self.round_number == 3
+        return self.round_number == 10
 
     def vars_for_template(self):
         opponent = self.player.other_player()

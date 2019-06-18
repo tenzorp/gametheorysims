@@ -1,0 +1,13 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Minimum Effort Game
+{% endblock %}
+
+{% block content %}
+
+    {% formfield player.effort label="Please enter an effort level between 1 and 5." %}
+
+    {% next_button %}
+{% endblock %}

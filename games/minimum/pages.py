@@ -1,24 +1,39 @@
-from otree.api import Currency as c, currency_range
 from ._builtin import Page, WaitPage
-from .models import Constants
 
 
-class MyPage(Page):
-    pass
+class Introduction(Page):
+    timeout_seconds = 120
+
+    def is_displayed(self):
+        return self.player.round_number == 1
+
+
+class Main(Page):
+    form_model = 'player'
+    form_fields = ['effort']
 
 
 class ResultsWaitPage(WaitPage):
 
     def after_all_players_arrive(self):
-        pass
+        players = self.group.get_players()
+        self.group.min = min([p.effort for p in players])
+        for p in players:
+            p.set_payoff()
 
 
 class Results(Page):
     timeout_seconds = 30
 
+    def vars_for_template(self):
+        return {
+            'player_payoff': int(self.player.payoff)
+        }
+
 
 page_sequence = [
-    MyPage,
+    Introduction,
+    Main,
     ResultsWaitPage,
     Results
 ]

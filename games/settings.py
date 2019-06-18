@@ -54,6 +54,12 @@ SESSION_CONFIGS = [
         'num_demo_participants': 2,
         'app_sequence': ['traveler']
     },
+    {
+        'name': 'minimum',
+        'display_name': 'Minimum Effort Game',
+        'num_demo_participants': 5,
+        'app_sequence': ['minimum']
+    },
 ]
 
 
