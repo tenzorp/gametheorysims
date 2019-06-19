@@ -2,10 +2,28 @@
 {% load otree static %}
 
 {% block title %}
-    Page title
+    Results: Stage {{ player.round_number }}
 {% endblock %}
 
 {% block content %}
+    <p>
+    {% if player.role == 1 %}
+        You chose '{{ player.decision }}'.
+        {% if player.decision == 'Out' %}
+            Player 2 could not make a choice.
+        {% else %}
+            Player 2 chose '{{ opponent.decision }}'.
+        {% endif %}
+    {% else %}
+        Player 1 chose '{{ opponent.decision }}'
+            {% if opponent.decision == 'Out' %}
+                and you could not make a choice.
+            {% else %}
+                and you chose '{{ player.decision }}'.
+            {% endif %}
+    {% endif %}
+        Thus, your payoff was {{ my_payoff }} and the other player's payoff was {{ opponent_payoff }}.
+    </p>
 
     {% next_button %}
 {% endblock %}

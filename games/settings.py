@@ -60,6 +60,12 @@ SESSION_CONFIGS = [
         'num_demo_participants': 5,
         'app_sequence': ['minimum']
     },
+    {
+        'name': 'nct',
+        'display_name': 'Non-credible Threat Game',
+        'num_demo_participants': 2,
+        'app_sequence': ['nct']
+    },
 ]
 
 

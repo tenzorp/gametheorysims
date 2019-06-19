@@ -1,0 +1,16 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Traveler's Dilemma
+{% endblock %}
+
+{% block content %}
+
+    <p>
+        The other player chose '{{ opponent_decision }}'.
+    </p>
+    {% formfield player.decision label="Please make your choice." %}
+
+    {% next_button %}
+{% endblock %}
