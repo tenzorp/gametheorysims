@@ -4,17 +4,18 @@ from otree.api import (
 )
 
 
-author = 'Your name here'
-
-doc = """
-Your app description
+"""
+Sim for Voluntary Contribution Game.
 """
 
 
 class Constants(BaseConstants):
     name_in_url = 'voluntary'
-    players_per_group = None
-    num_rounds = 1
+    players_per_group = 5
+    num_rounds = 10
+
+    instructions_template = 'voluntary/instructions.html'
+    endowment = 50
 
 
 class Subsession(BaseSubsession):
