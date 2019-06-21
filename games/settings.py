@@ -72,7 +72,30 @@ SESSION_CONFIGS = [
         'num_demo_participants': 5,
         'app_sequence': ['voluntary']
     },
-
+    {
+        'name': 'repeatedFlip',
+        'display_name': 'Repeated Game of Random Length',
+        'num_demo_participants': 2,
+        'app_sequence': ['repeatedFlip']
+    },
+    {
+        'name': 'company',
+        'display_name': 'Acquiring a Company',
+        'num_demo_participants': 2,
+        'app_sequence': ['company']
+    },
+    {
+        'name': 'jobMarket',
+        'display_name': 'Job Market Signaling',
+        'num_demo_participants': 2,
+        'app_sequence': ['jobMarket']
+    },
+    {
+        'name': 'pennies',
+        'display_name': 'Asymmetric Matching Pennies',
+        'num_demo_participants': 2,
+        'app_sequence': ['pennies']
+    },
 ]
 
 
