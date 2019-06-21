@@ -25,7 +25,7 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
-    claim = models.IntegerField(min=80, max=200)
+    claim = models.IntegerField(min=80, max=200, label="Please enter a claim between 80 and 200 cents.")
 
     def other_player(self):
         return self.get_others_in_group()[0]

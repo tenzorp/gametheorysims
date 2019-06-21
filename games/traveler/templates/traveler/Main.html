@@ -6,8 +6,9 @@
 {% endblock %}
 
 {% block content %}
+    <h3> Round {{ player.round_number }} </h3>
 
-    {% formfield player.claim label="Please enter a claim between 80 and 200 cents." %}
+    {% formfields %}
 
     {% next_button %}
 {% endblock %}

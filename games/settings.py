@@ -66,6 +66,13 @@ SESSION_CONFIGS = [
         'num_demo_participants': 2,
         'app_sequence': ['nct']
     },
+    {
+        'name': 'voluntary',
+        'display_name': 'Voluntary Contribution Game',
+        'num_demo_participants': 5,
+        'app_sequence': ['voluntary']
+    },
+
 ]
 
 

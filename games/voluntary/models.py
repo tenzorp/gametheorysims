@@ -1,7 +1,5 @@
 from otree.api import (
-    models, widgets, BaseConstants, BaseSubsession, BaseGroup, BasePlayer,
-    Currency as c, currency_range
-)
+    models, BaseConstants, BaseSubsession, BaseGroup, BasePlayer)
 
 
 """
@@ -23,8 +21,12 @@ class Subsession(BaseSubsession):
 
 
 class Group(BaseGroup):
-    pass
+    group_tokens = models.IntegerField(initial=0)
 
 
 class Player(BasePlayer):
-    pass
+    gp = models.IntegerField(min=0, max=Constants.endowment, label='Group Project')
+    ip = models.IntegerField(min=0, max=Constants.endowment, label='Individual Project')
+
+    def set_payoff(self):
+        self.payoff = self.ip + (0.5 * self.group.group_tokens)

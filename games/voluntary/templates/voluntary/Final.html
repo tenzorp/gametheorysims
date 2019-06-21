@@ -1,0 +1,23 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Voluntary Contribution Game
+{% endblock %}
+
+{% block content %}
+    <p>
+    {% if my_payoff == winner_payoff %}
+        You won!
+    {% else %}
+        You did not win.
+    {% endif %}
+    </p>
+
+    <p>
+        After 10 rounds, your total payoff is {{ my_payoff }} tokens.
+    </p>
+
+    {% next_button %}
+
+{% endblock %}
