@@ -1,10 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "global/Page.html" %}
+{% load otree static %}
 
-</body>
-</html>
+{% block title %}
+    Acquiring a Company: Round {{ player.round_number }}
+{% endblock %}
+
+{% block content %}
+    <p>
+        {% if player.role == 'Buyer' %}
+            You are the buyer! Please enter your bid.
+        {% else %}
+            You are the seller! Your company's value is {{ value }}. Please enter your reserve price.
+        {% endif %}
+    </p>
+    {% formfields %}
+
+    {% next_button %}
+{% endblock %}
