@@ -75,7 +75,7 @@ SESSION_CONFIGS = [
     {
         'name': 'repeatedFlip',
         'display_name': 'Repeated Game of Random Length',
-        'num_demo_participants': 2,
+        'num_demo_participants': 4,
         'app_sequence': ['repeatedFlip']
     },
     {
