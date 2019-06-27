@@ -2,7 +2,7 @@
 \usepackage{hyperref}
 \usepackage{listings}
 
-\title{oTree for Dummies}
+\title{oTree Setup}
 \author{Tenzin Dorjee}
 
 \begin{document}
@@ -21,11 +21,11 @@
 					\begin{lstlisting}
   pip3 install -U otree
 					\end{lstlisting}
-				\item Navigate to \url{https://github.com/tenzorp/gametheorysims} and download the games as a zip or, if you have Git installed (recommended), clone with 
+				\item Navigate to \url{https://github.com/tenzorp/gametheorysims} and download the games as a zip file or, if you have Git installed (recommended), clone with 
 					\begin{lstlisting}
   git clone https://github.com/tenzorp/gametheorysims.git
 					\end{lstlisting}
-				\item Change directories to the games folder. 'gametheorysims' is the parent folder of the project folder, 'games'.
+				\item Change directories to the 'games' folder. 'gametheorysims' is the parent of the 'games' project folder.
 					\begin{lstlisting}
   cd \Path\to\folder
 					\end{lstlisting}
@@ -36,10 +36,14 @@
 				\end{lstlisting}
 				\item Navigate to the demo page at \url{http://localhost:8000}.
   			\end{enumerate}
+  		
+  		
 	\section{Creating/Editing Games}
-		\subsection{oTree Studio}
-		\subsection{Python}
-			\paragraph{To edit existing apps:} Follow the steps in the Installation section of this guide and use your preferred text editor to edit game files. Each game's code is contained in an appropriately named folder within 'games'. Global assets are placed in '\_static'.
+		\subsection{oTree Studio (Recommended)}
+			oTree Studio is a point-and-click interface for creating and editing games provided by the makers of oTree. This method is recommended for users with no programming experience, as it requires no familiarity with Python. Some features of oTree are not supported by oTree Studio, so more complex games may need to be created manually. Examine the documentation to determine whether oTree Studio can meet your project's needs. This method does require you to make an account with oTree.
+		
+		\subsection{Python (For those with coding experience)}
+			\paragraph{To edit existing apps:} Follow the steps in the Installation section of this guide and use your preferred text editor to edit game files. Each game's code is contained in an appropriately named folder within 'games'. Global assets (images and CSS files) are placed in '\_static'.
 			\paragraph{To create your own oTree project:} 
 				\begin{enumerate}
 					\item Follow the first two steps of the Installation section of this guide. Open your Terminal and create the project folder (replace 'newProject' with name of your choice):
@@ -54,7 +58,17 @@
 					 \begin{lstlisting}
   otree startapp myApp
 					 \end{lstlisting}
-					 You can now edit the generated files in the app folder to create your game.
-				\end{enumerate}
+					 Follow steps 5 \& 6 of the Installation section to run the development server. You can now edit files generated for you in the app folder to create your game. To see your game on the demo page, you must add an entry to SESSION\_CONFIGS in 'settings.py', e.g.:
+					 \begin{lstlisting}
+  SESSION_CONFIGS = [
+  {
+      'name': 'myApp',
+      'display_name': 'My App,
+      'num_demo_participants': 2,
+      'app_sequence': ['myApp'],
+  }]
+					 \end{lstlisting}
+					 \end{enumerate}
+					 When in doubt, consult the documentation at \url{https://otree.readthedocs.io/en/latest/index.html}.
 	  
 \end{document}
