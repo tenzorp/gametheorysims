@@ -81,7 +81,7 @@ SESSION_CONFIGS = [
     {
         'name': 'company',
         'display_name': 'Acquiring a Company',
-        'num_demo_participants': 2,
+        'num_demo_participants': 6,
         'app_sequence': ['company']
     },
     {

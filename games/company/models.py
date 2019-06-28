@@ -18,6 +18,7 @@ class Constants(BaseConstants):
 
 
 class Subsession(BaseSubsession):
+
     def creating_session(self):
         self.group_randomly()
         for group in self.get_groups():
@@ -25,23 +26,20 @@ class Subsession(BaseSubsession):
 
 
 class Group(BaseGroup):
-    value = models.CurrencyField(min=0)
+    value = models.CurrencyField(min=0, initial=0)
 
 
 class Player(BasePlayer):
-    price = models.CurrencyField(min=0)
+    price = models.CurrencyField(min=0, initial=0)
 
     def role(self):
         if self.round_number == 1:
-            if self.id_in_group == 1:
-                return 'Buyer'
-            else:
-                return 'Seller'
+            return 'Buyer' if self.id_in_group == 1 else 'Seller'
         else:
-            if self.id_in_group == 2:
-                return 'Buyer'
-            else:
-                return 'Seller'
+            return 'Buyer' if self.in_round(1).role() == 'Seller' else 'Seller'
+
+    def other_player(self):
+        return self.get_others_in_group()[0]
 
     def set_payoff(self):
         buyer = self.group.get_player_by_role('Buyer')
