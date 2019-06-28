@@ -2,11 +2,12 @@
 {% load otree static %}
 
 {% block title %}
-    Page title
+    Job Market Signaling Game
 {% endblock %}
 
 {% block content %}
 
+    {% include Constants.instructions_template %}
     {% next_button %}
 
 {% endblock %}

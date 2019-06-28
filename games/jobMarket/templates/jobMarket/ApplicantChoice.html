@@ -1,0 +1,72 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Job Market Signaling: Round {{ player.round_number }}
+{% endblock %}
+
+{% block content %}
+
+    <p>
+        You are a {{ group.type }}. Keep in mind that difficult courses cost 50 for Slackers and 20 for Go-getters.
+    </p>
+
+    {% formfield player.choice label="Please choose your courses." %}
+    {% if group.type == 'Slacker' %}
+        <table class="table-sm table-bordered d-sm-inline-block">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th colspan="3" scope="col" class="text-center">Slacker (probability 0.6)<br></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th rowspan="3" scope="row" class="align-middle text-center">Employer</th>
+                    <td></td>
+                        <td>Easy</td>
+                        <td>Difficult</td>
+                </tr>
+                <tr>
+                    <td>Manager</td>
+                        <td>(0, 100)</td>
+                        <td>(0, 50)</td>
+                </tr>
+                <tr>
+                    <td>Clerk</td>
+                        <td>(60, 60)</td>
+                        <td>(60, 10)</td>
+                </tr>
+            </tbody>
+        </table>
+    {% else %}
+        <table class="table-sm table-bordered d-sm-inline-block">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th colspan="3" scope="col" class="text-center">Go-getter (probability 0.4)<br></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th rowspan="3" scope="row" class="align-middle text-center">Employer</th>
+                    <td></td>
+                        <td>Easy</td>
+                        <td>Difficult</td>
+                </tr>
+                <tr>
+                    <td>Manager</td>
+                        <td>(100, 100)</td>
+                        <td>(100, 80)</td>
+                </tr>
+                <tr>
+                    <td>Clerk</td>
+                        <td>(60, 60)</td>
+                        <td>(60, 40)</td>
+                </tr>
+            </tbody>
+        </table>
+    {% endif %}
+
+    {% next_button %}
+{% endblock %}

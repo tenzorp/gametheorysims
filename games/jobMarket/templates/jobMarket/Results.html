@@ -2,12 +2,21 @@
 {% load otree static %}
 
 {% block title %}
-    Page title
+    Results: Round {{ player.round_number }}
 {% endblock %}
 
 {% block content %}
+    <p>
+    {% if player.role == 'Employer' %}
+        The applicant was a {{ group.type }} type and they chose to take {{ opponent_choice }}. You chose to give the
+        applicant a {{ player.choice }}. Thus, your payoff is {{ player_payoff }} and the applicant's payoff was
+        {{ opponent_payoff }}.
+    {% else %}
+        As a {{ group.type }} type applicant, you chose to take {{ player.choice }}. Your employer observed this
+        decision and chose to offer you a {{ opponent_choice }}. Thus, your payoff is {{ player_payoff }} and your
+        employer's payoff is {{ opponent_payoff }}.
+    {% endif %}
+    </p>
 
     {% next_button %}
 {% endblock %}
-
-
