@@ -1,10 +1,106 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% load otree %}
 
-</body>
-</html>
+<div class="card bg-light instructions">
+    <div class="card-body">
+        <h3>
+            Instructions
+        </h3>
+        <link rel="stylesheet" type="text/css"
+              href="{% static 'global/matrix.css' %}"/>
+        <p>
+            &emsp;This experiment has 3 stages. In each stage, you will be matched with another student in the room and
+            play 4 rounds in each stage with the same partner. After each stage, you will be matched with a new partner.
+            &emsp;Stage 1: In this game, one student will be assigned the role of the Row Player and the other will be
+            assigned the role of the Column Player. Each simultaneously makes a choice between “Heads” and “Tails.” If
+            the two players’ choices match, the Row Player earns a payoff of 1, while the Column Player earns a payoff
+            of 0. If the choices mismatch, the Row Player earns a payoff of 0, while the Column Player earns a payoff of
+            1.
+            <br>
+            &emsp;The payoffs for both players are listed below for each case.
+            <table class="table table-md table-bordered">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th colspan="3" scope="col" class="text-center">Column<br></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th rowspan="3" scope="row" class="align-middle text-center">Row</th>
+                        <td></td>
+                            <td>Heads</td>
+                            <td>Tails</td>
+                    </tr>
+                    <tr>
+                        <td>Heads</td>
+                        <td>(1, 0)</td>
+                        <td>(0, 1)</td>
+                    </tr>
+                    <tr>
+                        <td>Tails</td>
+                        <td>(0, 1)</td>
+                        <td>(1, 0)</td>
+                    </tr>
+                </tbody>
+            </table>
+            &emsp;Stage 2: You now will be matched with a new partner and play a very similar game. The only difference
+            is in the Row Player’s payoff if the choices match on Heads. In this case, Row earns a payoff of 9. The
+            payoffs for all of the other outcomes and for Column are otherwise identical. This game is shown below.
+            <table class="table table-md table-bordered">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th colspan="3" scope="col" class="text-center">Column<br></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th rowspan="3" scope="row" class="align-middle text-center">Row</th>
+                        <td></td>
+                            <td>Heads</td>
+                            <td>Tails</td>
+                    </tr>
+                    <tr>
+                        <td>Heads</td>
+                        <td>(9, 0)</td>
+                        <td>(0, 1)</td>
+                    </tr>
+                    <tr>
+                        <td>Tails</td>
+                        <td>(0, 1)</td>
+                        <td>(1, 0)</td>
+                    </tr>
+                </tbody>
+            </table>
+            &emsp;Stage 3: You now will be matched with a new partner and play a very similar game to the first two. In
+            this game, Row earns a payoff of 0.50 if the two player both choose Heads. The payoffs for all of the other
+            outcomes and for Column are otherwise identical. This game is shown below.
+            <table class="table table-md table-bordered">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th colspan="3" scope="col" class="text-center">Column<br></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th rowspan="3" scope="row" class="align-middle text-center">Row</th>
+                        <td></td>
+                            <td>Heads</td>
+                            <td>Tails</td>
+                    </tr>
+                    <tr>
+                        <td>Heads</td>
+                        <td>(0.5, 0)</td>
+                        <td>(0, 1)</td>
+                    </tr>
+                    <tr>
+                        <td>Tails</td>
+                        <td>(0, 1)</td>
+                        <td>(1, 0)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </p>
+    </div>
+</div>

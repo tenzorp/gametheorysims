@@ -4,17 +4,15 @@ from otree.api import (
 )
 
 
-author = 'Your name here'
-
-doc = """
-Your app description
+"""
+Sim for 'Matching Pennies' game
 """
 
 
 class Constants(BaseConstants):
     name_in_url = 'pennies'
-    players_per_group = None
-    num_rounds = 1
+    players_per_group = 2
+    num_rounds = 3
 
 
 class Subsession(BaseSubsession):
