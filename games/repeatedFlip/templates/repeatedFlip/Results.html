@@ -1,0 +1,17 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Results: Round {{ player.round_number }}
+{% endblock %}
+
+{% block content %}
+    <p>
+        You chose {{ player.choice }} and your opponent chose {{ opponent_choice }}. Thus, your payoff is
+        {{ player_payoff }} and your opponent's is {{ opponent_payoff }}.
+    </p>
+
+    {% next_button %}
+{% endblock %}
+
+
