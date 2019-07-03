@@ -21,15 +21,23 @@
 					\begin{lstlisting}
   pip3 install -U otree
 					\end{lstlisting}
-				\item Navigate to \url{https://github.com/tenzorp/gametheorysims} and download the games as a zip file or, if you have Git installed (recommended), clone with 
+				\item Navigate to \url{https://github.com/tenzorp/gametheorysims} and download the games.otreezip file or, if you have Git installed, clone the project with 
 					\begin{lstlisting}
   git clone https://github.com/tenzorp/gametheorysims.git
+					\end{lstlisting}
+					If you downloaded games.otreezip, unzip the file with
+					\begin{lstlisting}
+  otree unzip games.otreezip
 					\end{lstlisting}
 				\item Change directories to the 'games' folder. 'gametheorysims' is the parent of the 'games' project folder.
 					\begin{lstlisting}
   cd \Path\to\folder
 					\end{lstlisting}
 					If you are unsure of the exact path, type 'cd ', drag the folder from your Finder window to the Terminal window, and then hit enter.
+				\item Install any dependencies with
+					\begin{lstlisting}
+  pip3 install -r requirements.txt
+					\end{lstlisting}
 				\item Start the development server by typing the following:
 				\begin{lstlisting}
   otree devserver
