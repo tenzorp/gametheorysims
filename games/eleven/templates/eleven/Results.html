@@ -2,10 +2,13 @@
 {% load otree static %}
 
 {% block title %}
-    Page title
+    Results
 {% endblock %}
 
 {% block content %}
+
+    You requested {{ player.request }} and the other player requested {{ opponent.request }}. Thus, your payoff is
+    {{ player.payoff }} and your opponent's payoff is {{ opponent.payoff }}.
 
     {% next_button %}
 {% endblock %}

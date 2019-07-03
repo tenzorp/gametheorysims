@@ -3,22 +3,33 @@ from ._builtin import Page, WaitPage
 from .models import Constants
 
 
-class MyPage(Page):
+class Introduction(Page):
     pass
+
+
+class Main(Page):
+    form_model = 'player'
+    form_fields = ['request']
 
 
 class ResultsWaitPage(WaitPage):
 
     def after_all_players_arrive(self):
-        pass
+        for p in self.group.get_players():
+            p.set_payoff()
 
 
 class Results(Page):
-    pass
+
+    def vars_for_template(self):
+        return {
+            'opponent': self.player.other_player()
+        }
 
 
 page_sequence = [
-    MyPage,
+    Introduction,
+    Main,
     ResultsWaitPage,
     Results
 ]

@@ -96,6 +96,18 @@ SESSION_CONFIGS = [
         'num_demo_participants': 2,
         'app_sequence': ['pennies']
     },
+    {
+        'name': 'eleven',
+        'display_name': '11-20 Game',
+        'num_demo_participants': 2,
+        'app_sequence': ['eleven']
+    },
+    {
+        'name': 'ultimatum',
+        'display_name': 'Ultimatum Game',
+        'num_demo_participants': 2,
+        'app_sequence': ['ultimatum']
+    },
 ]
 
 
