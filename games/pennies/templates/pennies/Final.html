@@ -1,0 +1,25 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Final Results: Stage {{ player.round_number }}
+{% endblock %}
+
+{% block content %}
+    <p>
+        {% if my_total > opponent_total %}
+            You won!
+        {% elif my_total == opponent_total %}
+            You tied!
+        {% else %}
+            You did not win.
+        {% endif %}
+    </p>
+
+     <p>
+         After 4 rounds, your total payoff is {{ my_total }} and your opponent's total payoff is {{ opponent_total }}.
+    </p>
+
+    {% next_button %}
+{% endblock %}
+

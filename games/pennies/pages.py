@@ -1,24 +1,63 @@
-from otree.api import Currency as c, currency_range
 from ._builtin import Page, WaitPage
-from .models import Constants
 
 
-class MyPage(Page):
-    pass
+class Introduction(Page):
+    def is_displayed(self):
+        return self.round_number == 1
+
+
+class Main(Page):
+    form_model = 'player'
+    form_fields = ['choice']
 
 
 class ResultsWaitPage(WaitPage):
 
     def after_all_players_arrive(self):
-        pass
+        for p in self.group.get_players():
+            p.set_payoff()
+            p.participant.vars['total'] += int(p.payoff)
 
 
 class Results(Page):
-    pass
+
+    def vars_for_template(self):
+        opponent = self.player.other_player()
+        return {
+            'player_payoff': int(self.player.payoff),
+            'opponent_choice': opponent.choice,
+            'opponent_payoff': int(opponent.payoff)
+        }
 
 
+class Final(Page):
+
+    def vars_for_template(self):
+        opponent = self.player.other_player()
+        return {
+            'my_total': self.player.participant.vars['total'],
+            'opponent_total': opponent.participant.vars['total']
+        }
+
+    def before_next_page(self):
+        for p in self.group.get_players():
+            p.participant.vars['total'] = 0
+
+
+# repeated sequence because groups must be rematched only after every 4 rounds
 page_sequence = [
-    MyPage,
+    Introduction,
+    Main,
     ResultsWaitPage,
-    Results
+    Results,
+    Main,
+    ResultsWaitPage,
+    Results,
+    Main,
+    ResultsWaitPage,
+    Results,
+    Main,
+    ResultsWaitPage,
+    Results,
+    Final
 ]

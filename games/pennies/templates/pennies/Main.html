@@ -1,10 +1,101 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "global/Page.html" %}
+{% load otree static %}
 
-</body>
-</html>
+{% block title %}
+    Asymmetric Matching Pennies: Stage {{ player.round_number }}
+{% endblock %}
+
+{% block content %}
+
+    {% if player.role == 'Row' %}
+        You are the Row Player.
+    {% else %}
+        You are the Column Player.
+    {% endif %}
+
+    {% formfields %}
+    {% if player.round_number == 1 %}
+        <table class="table table-xs table-bordered">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th colspan="3" scope="col" class="text-center">Column<br></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th rowspan="3" scope="row" class="align-middle text-center">Row</th>
+                        <td></td>
+                            <td>Heads</td>
+                            <td>Tails</td>
+                    </tr>
+                    <tr>
+                        <td>Heads</td>
+                        <td>(1, 0)</td>
+                        <td>(0, 1)</td>
+                    </tr>
+                    <tr>
+                        <td>Tails</td>
+                        <td>(0, 1)</td>
+                        <td>(1, 0)</td>
+                    </tr>
+                </tbody>
+            </table>
+    {% elif player.round_number == 2 %}
+        <table class="table table-xs table-bordered">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th colspan="3" scope="col" class="text-center">Column<br></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th rowspan="3" scope="row" class="align-middle text-center">Row</th>
+                        <td></td>
+                            <td>Heads</td>
+                            <td>Tails</td>
+                    </tr>
+                    <tr>
+                        <td>Heads</td>
+                        <td>(9, 0)</td>
+                        <td>(0, 1)</td>
+                    </tr>
+                    <tr>
+                        <td>Tails</td>
+                        <td>(0, 1)</td>
+                        <td>(1, 0)</td>
+                    </tr>
+                </tbody>
+            </table>
+    {% else %}
+        <table class="table table-xs table-bordered">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th colspan="3" scope="col" class="text-center">Column<br></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th rowspan="3" scope="row" class="align-middle text-center">Row</th>
+                    <td></td>
+                        <td>Heads</td>
+                        <td>Tails</td>
+                </tr>
+                <tr>
+                    <td>Heads</td>
+                    <td>(0.5, 0)</td>
+                    <td>(0, 1)</td>
+                </tr>
+                <tr>
+                    <td>Tails</td>
+                    <td>(0, 1)</td>
+                    <td>(1, 0)</td>
+                </tr>
+            </tbody>
+        </table>
+    {% endif %}
+
+    {% next_button %}
+{% endblock %}
