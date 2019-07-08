@@ -1,0 +1,17 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+   Ultimatum & Two-Stage Bargaining Game: Round {{ player.round_number }}
+{% endblock %}
+
+{% block content %}
+    <p>
+        The responder chose to reject your offer and make a counter of {{ group.counter }} out of $25. Please accept or
+        reject their offer. If you accept, you will receive the amount offered and the responder will receive the
+        remainder of the $25.
+    </p>
+    {% formfields %}
+
+    {% next_button %}
+{% endblock %}

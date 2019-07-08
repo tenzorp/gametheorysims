@@ -1,0 +1,17 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+   Ultimatum & Two-Stage Bargaining Game: Round {{ player.round_number }}
+{% endblock %}
+
+{% block content %}
+    <p>
+        You are the responder. The proposer has chosen to offer you {{ group.offer }} out of {{ Constants.endowment }}.
+        Please choose to accept or reject this offer. If you accept, your payoff will be {{ group.offer }} and the
+        proposer's payoff will be the amount remaining.
+    </p>
+    {% formfields %}
+
+    {% next_button %}
+{% endblock %}

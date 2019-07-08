@@ -8,12 +8,12 @@
         <link rel="stylesheet" type="text/css"
               href="{% static 'global/matrix.css' %}"/>
         <p class="card-text">
-            &emsp;This game will involve two parts. In the first part, you are matched with one other person in the
+            &emsp;This game will involve two parts. <b> In the first part,</b> you are matched with one other person in the
             room. One person is assigned to be the role of ”proposer” and the other person is the ”responder.”
-            The proposer will be asked to propose a split of a total of 100 dollars between the proposer and responder.
-            That is, the proposer will make an offer to the responder that specifies how much of the 100 dollars the
+            The proposer will be asked to propose a split of a total of {{ Constants.endowment }} between the proposer and responder.
+            That is, the proposer will make an offer to the responder that specifies how much of the {{ Constants.endowment }} the
             responder will receive, and the proposer will receive the rest. The amount offered can be anything from 0 to
-            100 dollars, in one cent increments.
+            {{ Constants.endowment }}, in one cent increments.
             <br/>
             &emsp;The earnings of the players depend on whether or not the responder accepts the offer. If the responder
             accepts the offer, they receive the number of dollars offered and the proposer receives the rest.
@@ -21,35 +21,36 @@
             <br/>
             &emsp;To summarize:
             <ol>
-                <li>The proposer offers an amount of money to the responder. The offer is between 0 and 100 dollars out
-                    of the total of 100 dollars.</li>
+                <li>The proposer offers an amount of money to the responder. The offer is between 0 and {{ Constants.endowment }} out
+                    of the total of {{ Constants.endowment }}.</li>
                 <li>The responder learns the offer and accepts or rejects it.</li>
                 <li>If the offer is accepted, the responder receives the amount offered and the proposer receives the
-                    remainder of the 100 dollars. If the offer is rejected, both players earn nothing for the game.</li>
+                    remainder of the {{ Constants.endowment }}. If the offer is rejected, both players earn nothing for the game.</li>
             </ol>
             &emsp;You will play this game two times with different randomly selected players in the room. You will be in
             a different role each time – i.e., if you were the proposer in the first game, you will be the responder in
             the second game and vice-versa.
             <br/>
-            &emsp;In the second part, you will play a similar game, with one change. In this version, if the responder
+            &emsp;<b>In the second part,</b> you will play a similar game, with one change. In this version, if the responder
             rejects the proposer’s offer, the game does not immediately end. Instead, the responder can make a
-            counter-offer. However, if the original offer of how to divide 100 dollars is rejected, the players will
-            only have 25 dollars to split between them. That is, the counter- offer made by the responder specifies how
-            much of the 25 dollars the proposer would receive, and the responder will receive the remainder of the 25
-            dollars. The proposer can then accept or reject this counter-offer. If the counter-offer is rejected, the
-            game ends and both players earn nothing.
+            counter-offer. However, if the original offer of how to divide {{ Constants.endowment }} is rejected, the players will
+            only have $25 to split between them. That is, the counter-offer made by the responder specifies how
+            much of the $25 the proposer would receive, and the responder will receive the remainder of the $25. The
+            proposer can then accept or reject this counter-offer. If the counter-offer is rejected, the game ends and
+            both players earn nothing.
+            <br/>
             &emsp;To summarize:
             <ol>
-                <li>The proposer offers an amount of money to the responder. The offer is between 0 and 100 dollars out
-                    of the total of 100 dollars.</li>
+                <li>The proposer offers an amount of money to the responder. The offer is between 0 and {{ Constants.endowment }}
+                    out of the total of {{ Constants.endowment }}.</li>
                 <li>The responder learns the offer and accepts or rejects it.</li>
                 <li>If the offer is accepted, the responder receives the amount offered and the proposer receives the
-                    remainder of the 100 dollars. If the offer is rejected, the responder counter- offers an amount of
-                    money to the proposer. This offer is between 0 and 25 dollars out of the new total of 25 dollars.</li>
+                    remainder of the {{ Constants.endowment }}. If the offer is rejected, the responder counter-offers
+                    an amount of money to the proposer. This offer is between 0 and $25 out of the new total of $25.</li>
                 <li>In the event a counter-offer was made, the proposer learns the counter-offer and accepts or rejects
                     it. If the counter-offer is accepted, the proposer receives the amount offered and the receiver
-                    receives the remainder of the 25 dollars. If the counter-offer is rejected, the game ends and both
-                    players earn nothing.</li>
+                    receives the remainder of the $25. If the counter-offer is rejected, the game ends and both players
+                    earn nothing.</li>
             </ol>
             &emsp;You will play this game two times with different randomly selected players in the room. You will be in
             a different role each time – i.e., if you were the proposer in the first game, you will be the responder in

@@ -2,13 +2,28 @@
 {% load otree static %}
 
 {% block title %}
-    Results
+    Results: Round {{ player.round_number }}
 {% endblock %}
 
 {% block content %}
-
-    You requested {{ player.request }} and the other player requested {{ opponent.request }}. Thus, your payoff is
-    {{ player.payoff }} and your opponent's payoff is {{ opponent.payoff }}.
+    <p>
+        {% if not group.responder_choice and player.round_number > 2 %}
+            {% if player.role == 'proposer' %}
+                You offered {{ group.offer }} to the responder. The responder chose to reject your offer and
+                counter-offer {{ group.counter }} out of $25. You chose to {{ counter }} the counter.
+            {% else %}
+                You were offered {{ group.offer }} out of {{ Constants.endowment }}. You chose to reject this offer and
+                counter with {{ group.counter }}. The proposer chose to {{ counter }} your counter.
+            {% endif %}
+        {% else %}
+            {% if player.role == 'proposer' %}
+                You offered {{ group.offer }} to the responder. The responder chose to {{ choice }} your offer.
+            {% else %}
+                You were offered {{ group.offer }} out of {{ Constants.endowment }}. You chose to {{ choice }} this offer.
+            {% endif %}
+        {% endif %}
+        Thus, your payoff is {{ player.payoff }} and your partner's payoff is {{ opponent.payoff }}.
+    </p>
 
     {% next_button %}
 {% endblock %}

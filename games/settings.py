@@ -121,6 +121,7 @@ ROOMS = [
     {
         'name': 'class',
         'display_name': 'Class',
+        'participant_label_file': '_rooms/class.txt'
     }
 ]
 
