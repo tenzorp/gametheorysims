@@ -15,22 +15,21 @@ class Constants(BaseConstants):
     num_rounds = 1
 
     instructions_template = 'beautyContest/instructions.html'
-    endowment = 100
 
 
 class Subsession(BaseSubsession):
-    pass
+    def creating_session(self):
+        for g in self.get_groups():  # set max guess value using configurable value
+            g.endowment = self.session.config['endowment']
 
 
 class Group(BaseGroup):
-    mean = models.FloatField()
-    twothirds = models.FloatField()
-    winningval = models.FloatField()
-    winner = models.IntegerField()
+    endowment = models.IntegerField()
+    winning = models.FloatField()
 
 
 class Player(BasePlayer):
-    guess = models.FloatField(min=0, max=Constants.endowment)
+    guess = models.FloatField(min=0, max=100, label='')
     winner = models.BooleanField()
 
     def guess_error_message(self, value):

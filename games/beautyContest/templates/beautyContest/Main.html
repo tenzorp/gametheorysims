@@ -6,11 +6,10 @@
 {% endblock %}
 
 {% block content %}
-
-    Please enter a number from 0 to {{ Constants.endowment }} with up to three decimal places.
-
+    <p>
+        Please enter a number from 0 to {{ group.endowment }} with up to three decimal places.
+    </p>
     {% formfields %}
 
     {% next_button %}
-
 {% endblock %}

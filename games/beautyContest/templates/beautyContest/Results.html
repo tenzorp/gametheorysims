@@ -7,12 +7,16 @@
 
 {% block content %}
 
-    {% if player.winner %} You won! <br/> {% endif %}
+    {% if player.winner %}
+        You won!
+    {% else %}
+        You did not win.
+    {% endif %}
+
     <p>
-        Your guess was {{ player.guess }} and the average was {{ group.mean }}.
-        Two-thirds of the mean was {{ group.twothirds }} and the player with the
-        closest guess was Player {{ group.winner }} with a winning value of
-        {{ group.winningval }}.
+        Your guess was {{ player.guess }} and the average was {{ mean }}.
+        Two-thirds of the mean was {{ group.winning }}.
     </p>
+
     {% next_button %}
 {% endblock %}

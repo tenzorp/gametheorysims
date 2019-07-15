@@ -2,7 +2,7 @@ from ._builtin import Page, WaitPage
 
 
 class Introduction(Page):
-    timeout_seconds = 120
+    pass
 
 
 class Main(Page):
@@ -11,20 +11,20 @@ class Main(Page):
 
 
 class ResultsWaitPage(WaitPage):
-    def after_all_players_arrive(self):
+    def after_all_players_arrive(self):  # not a great practice to have this much in pages but this felt easiest
         players = self.group.get_players()
-        win = [p.guess for p in players]
-        self.group.mean = sum(win) / len(players)
-        self.group.twothirds = self.group.mean * (2/3)
-        self.group.winningval = min(win, key=lambda x: x-self.group.twothirds)
+        self.group.winning = round((sum([p.guess for p in players]) / len(players)) * 2/3, 3)
+        winner = min([p.guess for p in players], key=lambda  x:abs(x-self.group.winning))
         for p in players:
-            if self.group.winningval == p.guess:
-                p.winner = True
-                self.group.winner = p.id_in_group
+            p.winner = True if p.guess == winner else False
 
 
 class Results(Page):
-    pass
+
+    def vars_for_template(self):
+        return {
+            'mean': round(self.group.winning * (3/2), 3)
+        }
 
 
 page_sequence = [

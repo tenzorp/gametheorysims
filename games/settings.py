@@ -16,6 +16,7 @@ SESSION_CONFIGS = [
         'display_name': 'Beauty Contest',
         'num_demo_participants': 3,
         'app_sequence': ['beautyContest'],
+        'endowment': 100
     },
     {
         'name': 'prisoner',
