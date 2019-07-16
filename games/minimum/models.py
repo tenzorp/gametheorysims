@@ -10,7 +10,7 @@ Sim for "Minimum Effort Game"
 class Constants(BaseConstants):
     name_in_url = 'minimum'
     players_per_group = 5
-    num_rounds = 3
+    num_rounds = 10
 
     instructions_template = 'minimum/instructions.html'
 
