@@ -22,9 +22,21 @@ class Subsession(BaseSubsession):
 class Group(BaseGroup):
     min = models.IntegerField()
 
+    def winner(self):
+        val = 0
+        winner = ''
+        for p in self.get_players():
+            if p.total() > val:
+                val = p.total()
+                winner = p.id_in_group
+        return winner
+
 
 class Player(BasePlayer):
     effort = models.IntegerField(min=1, max=5)
 
     def set_payoff(self):
         self.payoff = 5 * self.group.min - self.effort
+
+    def total(self):
+        return int(sum([p.payoff for p in self.in_all_rounds()]))

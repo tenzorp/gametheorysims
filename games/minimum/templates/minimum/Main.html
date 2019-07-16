@@ -8,6 +8,65 @@
 {% block content %}
 
     {% formfield player.effort label="Please enter an effort level between 1 and 5." %}
+     <table class="table table-sm table-bordered">
+        <thead>
+            <tr>
+                <th></th>
+                <th colspan="6" scope="col" class="text-center">Minimum Effort<br></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th rowspan="6" scope="row" class="align-middle text-center" style="width:10%">Your Effort</th>
+                <td></td>
+                    <th>1</th>
+                    <th>2</th>
+                    <th>3</th>
+                    <th>4</th>
+                    <th>5</th>
+            </tr>
+            <tr>
+                <th>1</th>
+                    <td>4</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+            </tr>
+            <tr>
+                <th>2</th>
+                    <td>3</td>
+                    <td>8</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+            </tr>
+            <tr>
+                <th>3</th>
+                    <td>2</td>
+                    <td>7</td>
+                    <td>12</td>
+                    <td>-</td>
+                    <td>-</td>
+            </tr>
+            <tr>
+                <th>4</th>
+                    <td>1</td>
+                    <td>6</td>
+                    <td>11</td>
+                    <td>16</td>
+                    <td>-</td>
+            </tr>
+            <tr>
+                <th>5</th>
+                    <td>0</td>
+                    <td>5</td>
+                    <td>10</td>
+                    <td>15</td>
+                    <td>20</td>
+            </tr>
+        </tbody>
+    </table>
 
     {% next_button %}
 {% endblock %}

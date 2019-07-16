@@ -2,7 +2,6 @@ from ._builtin import Page, WaitPage
 
 
 class Introduction(Page):
-    timeout_seconds = 120
 
     def is_displayed(self):
         return self.player.round_number == 1
@@ -27,7 +26,20 @@ class Results(Page):
 
     def vars_for_template(self):
         return {
-            'player_payoff': int(self.player.payoff)
+            'my_payoff': int(self.player.payoff)
+        }
+
+
+class Final(Page):
+
+    def is_displayed(self):
+        return self.round_number == 3
+
+    def vars_for_template(self):
+        return {
+            'my_total': self.player.total(),
+            'winner': self.group.winner(),
+            'winner_payoff': self.group.get_player_by_id(self.group.winner()).total()
         }
 
 
@@ -35,5 +47,6 @@ page_sequence = [
     Introduction,
     Main,
     ResultsWaitPage,
-    Results
+    Results,
+    Final
 ]
