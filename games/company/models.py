@@ -1,6 +1,6 @@
 from otree.api import (
-    models, widgets, BaseConstants, BaseSubsession, BaseGroup, BasePlayer,
-    Currency as c, currency_range
+    models, BaseConstants, BaseSubsession, BaseGroup, BasePlayer,
+    Currency as c
 )
 import random
 
@@ -30,7 +30,7 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
-    price = models.CurrencyField(min=0, initial=0)
+    price = models.CurrencyField(min=0, initial=0, label='')
 
     def role(self):
         if self.round_number == 1:

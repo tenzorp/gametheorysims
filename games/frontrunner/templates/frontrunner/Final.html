@@ -14,13 +14,11 @@
         {% else %}
             You did not win.
         {% endif %}
+        <br/>
+        After 5 rounds, your total payoff is {{ my_payoff }} points and your opponent's total payoff is
+        {{ opponent_payoff }} points.
     </p>
 
-     <p>
-         After 5 rounds, your total payoff is {{ my_payoff }} points and your opponent's total payoff is
-         {{ opponent_payoff }} points.
-
-    </p>
     {% next_button %}
 {% endblock %}
 

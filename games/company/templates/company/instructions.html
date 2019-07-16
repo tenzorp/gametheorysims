@@ -2,16 +2,16 @@
 
 <div class="card bg-light instructions">
     <div class="card-body">
-        <h3>
+        <h3 class="card-header">
             Instructions
         </h3>
         <link rel="stylesheet" type="text/css"
               href="{% static 'global/matrix.css' %}"/>
         <p>
             &emsp;In this game, you will be matched with another student in the room. One student will be assigned the
-            role of a “buyer” and the other the “seller.” The buyer’s job is to decide how much to bid on a company that
-            the seller owns, while the seller simultaneously decides their reserve price, or the minimum bid that they
-            are willing to accept.
+            role of a <b>“buyer”</b> and the other the <b>“seller.”</b> The buyer’s job is to decide how much to bid on
+            a company that the seller owns, while the seller simultaneously decides their reserve price, or the minimum
+            bid that they are willing to accept.
             <br/><br/>
             &emsp;The final payoffs of each player depends on the company’s value. The seller always knows the
             company’s value, and the buyer only knows that the value is a randomly drawn number between 0 and 100, with
@@ -23,12 +23,12 @@
             buyer’s payoff is equal to 1.5 times the value, minus the bid. Otherwise, no trade will be made and the game
             ends. In this case, the seller’s payoff is equal to the value of the company and the buyer’s payoff is equal
             to 0.
-            <br/>
-            &emsp;To summarize: If the bid is less than the seller’s reserve price, the buyer’s payoff is 0 and the
+            <br/><br/>
+            &emsp;<b>To summarize:</b> If the bid is less than the seller’s reserve price, the buyer’s payoff is 0 and the
             seller’s payoff is the value of the company. If the bid is greater than or equal to the seller’s reserve
             price, the buyer’s payoff is 1.5 times the value, minus the bid, and the seller’s payoff is equal to the bid.
             <br/><br/>
-            &emsp;The game will be played twice. Each time you will be matched with a different partner and the roles will be
+            &emsp;The game will be played <b>twice</b>. Each time you will be matched with a different partner and the roles will be
             reversed.
         </p>
     </div>

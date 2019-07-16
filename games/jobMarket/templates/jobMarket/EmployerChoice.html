@@ -6,69 +6,108 @@
 {% endblock %}
 
 {% block content %}
-    {% if player.round_number != 3 %}
-        <p>
+    <p>
+        {% if player.round_number != 3 %}
             The applicant has chosen to take {{ applicant_choice }}.
-        </p>
-    {% else %}
-        <p>
-            The applicant has sent you the following message: 'I am a {{ applicant_choice }}.'
-        </p>
-    {% endif %}
+            {% formfield player.choice label='Please choose a job to offer.' %}
 
-    {% formfields label="Please choose a job to offer." %}
-        <table class="table-sm table-bordered d-sm-inline-block">
+            <table class="table-sm table-bordered d-sm-inline-block">
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th colspan="3" scope="col" class="text-center">Slacker (probability 0.6)<br></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th rowspan="3" scope="row" class="align-middle text-center">Employer</th>
+                        <td></td>
+                            <td>Easy</td>
+                            <td>Difficult</td>
+                    </tr>
+                    <tr>
+                        <td>Manager</td>
+                            <td>(0, 100)</td>
+                            <td>(0, 50)</td>
+                    </tr>
+                    <tr>
+                        <td>Clerk</td>
+                            <td>(60, 60)</td>
+                            <td>(60, 10)</td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table-sm table-bordered d-sm-inline-block">
                 <thead>
-                <tr>
-                    <th></th>
-                    <th colspan="3" scope="col" class="text-center">Slacker (probability 0.6)<br></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th rowspan="3" scope="row" class="align-middle text-center">Employer</th>
-                    <td></td>
-                        <td>Easy</td>
-                        <td>Difficult</td>
-                </tr>
-                <tr>
-                    <td>Manager</td>
+                    <tr>
+                        <th></th>
+                        <th colspan="3" scope="col" class="text-center">Go-getter (probability 0.4)<br></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th rowspan="3" scope="row" class="align-middle text-center">Employer</th>
+                        <td></td>
+                            <td>Easy</td>
+                            <td>Difficult</td>
+                    </tr>
+                    <tr>
+                        <td>Manager</td>
+                            <td>(100, 100)</td>
+                            <td>(100, 80)</td>
+                    </tr>
+                    <tr>
+                        <td>Clerk</td>
+                            <td>(60, 60)</td>
+                            <td>(60, 40)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        {% else %}
+            The applicant has sent you the following message: 'I am a {{ applicant_choice }}.'
+            {% formfield player.choice label='Please choose a job to offer.' %}
+
+            <table class="table-sm table-bordered d-sm-inline-block">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th colspan="2" scope="col" class="text-center">Slacker (probability 0.6)<br></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th rowspan="2" scope="row" class="align-middle text-center">Employer</th>
+                        <td>Manager</td>
                         <td>(0, 100)</td>
-                        <td>(0, 50)</td>
-                </tr>
-                <tr>
-                    <td>Clerk</td>
+                    </tr>
+                    <tr>
+                        <td>Clerk</td>
                         <td>(60, 60)</td>
-                        <td>(60, 10)</td>
-                </tr>
-            </tbody>
-        </table>
-        <table class="table-sm table-bordered d-sm-inline-block">
-            <thead>
-                <tr>
-                    <th></th>
-                    <th colspan="3" scope="col" class="text-center">Go-getter (probability 0.4)<br></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th rowspan="3" scope="row" class="align-middle text-center">Employer</th>
-                    <td></td>
-                        <td>Easy</td>
-                        <td>Difficult</td>
-                </tr>
-                <tr>
-                    <td>Manager</td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table-sm table-bordered d-sm-inline-block">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th colspan="2" scope="col" class="text-center">Go-getter (probability 0.6)<br></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th rowspan="2" scope="row" class="align-middle text-center">Employer</th>
+                        <td>Manager</td>
                         <td>(100, 100)</td>
-                        <td>(100, 80)</td>
-                </tr>
-                <tr>
-                    <td>Clerk</td>
+                    </tr>
+                    <tr>
+                        <td>Clerk</td>
                         <td>(60, 60)</td>
-                        <td>(60, 40)</td>
-                </tr>
-            </tbody>
-        </table>
+                    </tr>
+                </tbody>
+            </table>
+        {% endif %}
+    <p/>
 
     {% next_button %}
 {% endblock %}

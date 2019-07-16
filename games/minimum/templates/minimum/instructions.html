@@ -2,24 +2,23 @@
 
 <div class="card bg-light instructions">
     <div class="card-body">
-        <h3>
+        <h3 class="card-header">
             Instructions
         </h3>
         <link rel="stylesheet" type="text/css"
               href="{% static 'global/matrix.css' %}"/>
         <p>
-            This experiment consists of 10 periods. In each period, you will be randomly matched with 4 other
+            &emsp;This experiment consists of 10 periods. In each period, you will be randomly matched with 4 other
             participants in the room.  Your earnings depend on your choices as well as the choices of the people you
-            are matched with. Each person will choose an effort level between 1 and 5. Your earn- ings depend on the
+            are matched with. Each person will choose an effort level between 1 and 5. Your earnings depend on the
             minimum effort level chosen by you and the people you are matched with, minus your own effort.
             Specifically, your payoff is determined by the equation:
-            <p>
-                Payoff = 5 * Minimum Effort - Your Effort
-            </p>
-        </p>
-        <p>
-            The following table lists the payoff you will receive for each effort level that you might choose and the
+            <br/> <br/>
+            &emsp;Payoff = 5 * Minimum Effort - Your Effort
+            <br/> <br/>
+            &emsp;The following table lists the payoff you will receive for each effort level that you might choose and the
             minimum effort provided by the entire team (including you).
+
             <table class="table table-sm table-bordered">
                 <thead>
                     <tr>
@@ -31,11 +30,11 @@
                     <tr>
                         <th rowspan="6" scope="row" class="align-middle text-center" style="width:10%">Your Effort</th>
                         <td></td>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>3</td>
-                            <td>4</td>
-                            <td>5</td>
+                            <th>1</th>
+                            <th>2</th>
+                            <th>3</th>
+                            <th>4</th>
+                            <th>5</th>
                     </tr>
                     <tr>
                         <td>1</td>
@@ -79,9 +78,7 @@
                     </tr>
                 </tbody>
             </table>
-        </p>
-        <p>
-            For example, if you choose 3 and the other four group members choose 5, 3, 3 and 2 then the group minimum
+            &emsp;For example, if you choose 3 and the other four group members choose 5, 3, 3 and 2 then the group minimum
             is 2 and your payoff is (5 * 2) − 3 = 7. If instead, you chose 2 like one of the other group members, your
             payoff would be (5 * 2) − 2 = 8.
         </p>

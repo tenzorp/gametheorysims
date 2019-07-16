@@ -74,7 +74,9 @@
             You are a {{ group.type }}. In this round, you will choose how to message your employer about your applicant
             type. The message sent does not affect your payoff.
         </p>
+
         {% formfields label="Please choose your message." %}
+
         {% if group.type == 'Slacker' %}
             <table class="table-sm table-bordered d-sm-inline-block">
                 <thead>

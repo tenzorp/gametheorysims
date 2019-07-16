@@ -2,17 +2,55 @@
 {% load otree static %}
 
 {% block title %}
-    Frontrunner - Challenger Game
+    Frontrunner - Challenger Game: Round {{ player.round_number }}
 {% endblock %}
 
 {% block content %}
+    <p>
+        {% if player.role == 'Row' %}
+            Please choose your political platform.
+        {% else %}
+            Please choose how to address the Row Player.
+        {% endif %}
+    </p>
 
-    {% if player.role == 'Row' %}
-        {% formfield player.choice label="Please choose your platform." %}
-    {% else %}
-        {% formfield player.choice label="Please choose your action." %}
-    {% endif %}
+    {% formfields %}
+
+    <table class="table table-md table-bordered">
+        <thead>
+            <tr>
+                <th></th>
+                <th colspan="4" scope="col" class="text-center">Column<br></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th rowspan="4" scope="row" class="align-middle text-center">Row</th>
+                <td></td>
+                    <td>Challenge</td>
+                    <td>Ignore</td>
+                    <td>Praise</td>
+            </tr>
+            <tr>
+                <td>Extreme</td>
+                    <td>(10, -10)</td>
+                    <td>(-5, 5)</td>
+                    <td>(0, 0)</td>
+            </tr>
+            <tr>
+                <td>Moderate</td>
+                    <td>(0, 0)</td>
+                    <td>(7, -7)</td>
+                    <td>(1, -1)</td>
+            </tr>
+            <tr>
+                <td>Vague</td>
+                    <td>(4, -4)</td>
+                    <td>(3, -3)</td>
+                    <td>(2, -2)</td>
+            </tr>
+        </tbody>
+    </table>
 
     {% next_button %}
-
 {% endblock %}

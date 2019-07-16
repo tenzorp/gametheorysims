@@ -34,7 +34,7 @@ class Player(BasePlayer):
         if self.round_number == 1:
             return 'Applicant' if self.id_in_group == 1 else 'Employer'
         else:
-            return 'Applicant' if self.in_round(1).role() == 'Employer' else 'Employer'
+            return 'Applicant' if self.in_round(self.round_number-1).role() == 'Employer' else 'Employer'
 
     def choice_choices(self):
         if self.role() == 'Applicant':
@@ -46,89 +46,45 @@ class Player(BasePlayer):
         return self.get_others_in_group()[0]
 
     def set_payoff(self):
+        emp = self.group.get_player_by_role('Employer')
+        app = self.group.get_player_by_role('Applicant')
+        i = 0 if self.role() == 'Employer' else 1
+
         if self.group.type == 'Slacker':
-            if self.role() == 'Employer':
-                if self.round_number == 3:
-                    payoff = {
-                        'Managerial Job': 0,
-                        'Clerical Job': 60
-                    }
-                    self.payoff = payoff[self.choice]
-                else:
-                    payoff = {
-                        'Managerial Job':
-                            {
-                                'Easy Courses': 0,
-                                'Difficult Courses': 0
-                            },
-                        'Clerical Job':
-                            {
-                                'Easy Courses': 60,
-                                'Difficult Courses': 60
-                            }
-                    }
-                    self.payoff = payoff[self.choice][self.other_player().choice]
-            else:  # Applicant
-                if self.round_number == 3:
-                    payoff = {
-                        'Managerial Job': 100,
-                        'Clerical Job': 60
-                    }
-                    self.payoff = payoff[self.other_player().choice]
-                else:
-                    payoff = {
-                        'Managerial Job':
-                            {
-                                'Easy Courses': 100,
-                                'Difficult Courses': 50
-                            },
-                        'Clerical Job':
-                            {
-                                'Easy Courses': 60,
-                                'Difficult Courses': 10
-                            }
-                    }
-                    self.payoff = payoff[self.other_player().choice][self.choice]
-        else:  # go-getter
-            if self.round_number == 3:
+            if self.round_number != 3:
                 payoff = {
-                    'Managerial Job': 100,
-                    'Clerical Job': 60
-                }
-                self.payoff = payoff[self.group.get_player_by_role('Employer').choice]
-            else:
-                if self.role() == 'Employer':
-                    if self.round_number == 3:
-                        payoff = {
-                            'Managerial Job': 100,
-                            'Clerical Job': 60
-                        }
-                        self.payoff = payoff[self.choice]
-                    else:
-                        payoff = {
-                            'Managerial Job':
-                                {
-                                    'Easy Courses': 100,
-                                    'Difficult Courses': 100
-                                },
-                            'Clerical Job':
-                                {
-                                    'Easy Courses': 60,
-                                    'Difficult Courses': 60
-                                }
-                        }
-                        self.payoff = payoff[self.choice][self.other_player().choice]
-                else:  # Applicant
-                    payoff = {
-                        'Managerial Job':
-                            {
-                                'Easy Courses': 100,
-                                'Difficult Courses': 80
-                            },
-                        'Clerical Job':
-                            {
-                                'Easy Courses': 60,
-                                'Difficult Courses': 40
-                            }
+                    'Managerial Job': {
+                        'Easy Courses': [0, 100],
+                        'Difficult Courses': [0, 50]
+                    },
+                    'Clerical Job': {
+                        'Easy Courses': [60, 60],
+                        'Difficult Courses': [60, 10]
                     }
-                    self.payoff = payoff[self.other_player().choice][self.choice]
+                }
+                self.payoff = payoff[emp.choice][app.choice][i]
+            else:
+                payoff = {
+                    'Managerial Job': [0, 100],
+                    'Clerical Job': [60, 60]
+                }
+                self.payoff = payoff[emp.choice][i]
+        else:  # go-getter
+            if self.round_number != 3:
+                payoff = {
+                    'Managerial Job': {
+                        'Easy Courses': [100, 100],
+                        'Difficult Courses': [100, 80]
+                    },
+                    'Clerical Job': {
+                        'Easy Courses': [60, 60],
+                        'Difficult Courses': [60, 40]
+                    }
+                }
+                self.payoff = payoff[emp.choice][app.choice][i]
+            else:
+                payoff = {
+                    'Managerial Job': [100, 100],
+                    'Clerical Job': [60, 60]
+                }
+                self.payoff = payoff[emp.choice][i]

@@ -26,8 +26,7 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
-    choice = models.StringField(
-        widget=widgets.RadioSelect)
+    choice = models.StringField(widget=widgets.RadioSelect, label='')
 
     def choice_choices(self):
         if self.role() == 'Row':
@@ -45,48 +44,25 @@ class Player(BasePlayer):
         return self.get_others_in_group()[0]
 
     def set_payoff(self):
-        if self.role() == 'Column':
-            # had to define two here rather than one bc not symmetrical like the other
-            payoff = {
-                'Challenge':
-                    {
-                        'Extreme': -10,
-                        'Moderate': 0,
-                        'Vague': -4
-                    },
-                'Ignore':
-                    {
-                        'Extreme': 5,
-                        'Moderate': -7,
-                        'Vague': -3
-                    },
-                'Praise':
-                    {
-                        'Extreme': 0,
-                        'Moderate': -1,
-                        'Vague': -2
-                    }
-            }
-            self.payoff = payoff[self.choice][self.other_player().choice]
-        else:
-            payoff = {
-                'Extreme':
-                    {
-                        'Challenge': 10,
-                        'Ignore': -5,
-                        'Praise': 0
-                    },
-                'Moderate':
-                    {
-                        'Challenge': 0,
-                        'Ignore': 7,
-                        'Praise': 1
-                    },
-                'Vague':
-                    {
-                        'Challenge': 4,
-                        'Ignore': 3,
-                        'Praise': 2
-                    }
-            }
-            self.payoff = payoff[self.choice][self.other_player().choice]
+        payoff = {
+            'Extreme':
+                {
+                    'Challenge': [10, -10],
+                    'Ignore': [-5, 5],
+                    'Praise': [0, 0]
+                },
+            'Moderate':
+                {
+                    'Challenge': [0, 0],
+                    'Ignore': [7, -7],
+                    'Praise': [1, -1]
+                },
+            'Vague':
+                {
+                    'Challenge': [4, -4],
+                    'Ignore': [3, -3],
+                    'Praise': [2, -2]
+                }
+        }
+        i = 0 if self.role() == 'Row' else 1
+        self.payoff = payoff[self.group.get_player_by_role('Row').choice][self.group.get_player_by_role('Column').choice][i]
