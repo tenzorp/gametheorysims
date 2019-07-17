@@ -22,14 +22,14 @@ SESSION_CONFIGS = [
         'name': 'prisoner',
         'display_name': "Prisoner's Dilemma",
         'num_demo_participants': 2,
-        'app_sequence': ['prisoner'],
+        'app_sequence': ['prisoner']
     },
     {
         'name': 'secondPrice',
         'display_name': 'Second Price Auction',
         'num_demo_participants': 2,
         'app_sequence': ['secondPrice'],
-        'players_per_group': 3,
+        'players_per_group': 3
     },
     {
         'name': 'priceComp',
@@ -59,7 +59,8 @@ SESSION_CONFIGS = [
         'name': 'minimum',
         'display_name': 'Minimum Effort Game',
         'num_demo_participants': 5,
-        'app_sequence': ['minimum']
+        'app_sequence': ['minimum'],
+        'players_per_group': 5
     },
     {
         'name': 'nct',

@@ -27,6 +27,7 @@ class Constants(BaseConstants):
 
 
 class Subsession(BaseSubsession):
+
     def creating_session(self):
         group_matrix = []
         players = self.get_players()

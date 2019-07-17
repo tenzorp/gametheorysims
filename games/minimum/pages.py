@@ -30,23 +30,9 @@ class Results(Page):
         }
 
 
-class Final(Page):
-
-    def is_displayed(self):
-        return self.round_number == 10
-
-    def vars_for_template(self):
-        return {
-            'my_total': self.player.total(),
-            'winner': self.group.winner(),
-            'winner_payoff': self.group.get_player_by_id(self.group.winner()).total()
-        }
-
-
 page_sequence = [
     Introduction,
     Main,
     ResultsWaitPage,
-    Results,
-    Final
+    Results
 ]
