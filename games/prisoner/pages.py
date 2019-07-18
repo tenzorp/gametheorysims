@@ -2,7 +2,7 @@ from ._builtin import Page, WaitPage
 
 
 class Introduction(Page):
-    timeout_seconds = 120
+    pass
 
 
 class Main(Page):

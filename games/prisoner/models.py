@@ -40,7 +40,8 @@ class Group(BaseGroup):
 class Player(BasePlayer):
     decision = models.StringField(
         choices=['Confess', 'Remain silent'],
-        widget=widgets.RadioSelect
+        widget=widgets.RadioSelect,
+        label='Please choose to confess or remain silent.'
     )
     sentence = models.IntegerField()
 
@@ -52,11 +53,11 @@ class Player(BasePlayer):
             'Confess':
                 {
                     'Confess': Constants.bothConfess,
-                    'Remain silent': Constants.betrayed
+                    'Remain silent': Constants.betrayer
                 },
             'Remain silent':
                 {
-                    'Confess': Constants.betrayer,
+                    'Confess': Constants.betrayed,
                     'Remain silent': Constants.bothSilent
                 }
         }

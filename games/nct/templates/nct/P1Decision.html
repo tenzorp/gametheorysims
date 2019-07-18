@@ -2,12 +2,17 @@
 {% load otree static %}
 
 {% block title %}
-    Traveler's Dilemma
+    Non-credible Threat Game
 {% endblock %}
 
 {% block content %}
 
-    {% formfield player.decision label="Please make your choice." %}
+    {% formfields %}
+    {% if player.round_number == 1 %}
+        <img src="{% static 'nct/nct1.png' %}"/>
+    {% else %}
+        <img src="{% static 'nct/nct2.png' %}"/>
+    {% endif %}
 
     {% next_button %}
 {% endblock %}

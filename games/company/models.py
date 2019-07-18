@@ -45,7 +45,7 @@ class Player(BasePlayer):
         buyer = self.group.get_player_by_role('Buyer')
         seller = self.group.get_player_by_role('Seller')
         if buyer.price >= seller.price:
-            buyer.payoff = 1.5 * self.group.value
+            buyer.payoff = 1.5 * self.group.value - self.price
             seller.payoff = buyer.price
         else:
             buyer.payoff = 0

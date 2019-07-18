@@ -1,7 +1,5 @@
 from otree.api import (
-    models, widgets, BaseConstants, BaseSubsession, BaseGroup, BasePlayer,
-    Currency as c, currency_range
-)
+    models, widgets, BaseConstants, BaseSubsession, BaseGroup, BasePlayer)
 import random
 
 """
@@ -19,6 +17,7 @@ class Constants(BaseConstants):
 
 
 class Subsession(BaseSubsession):
+
     def creating_session(self):
         self.group_randomly()
         for p in self.get_players():

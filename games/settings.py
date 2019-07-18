@@ -122,8 +122,7 @@ USE_POINTS = False
 ROOMS = [
     {
         'name': 'class',
-        'display_name': 'Class',
-        'participant_label_file': '_rooms/class.txt'
+        'display_name': 'Class'
     }
 ]
 

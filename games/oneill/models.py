@@ -27,7 +27,8 @@ class Group(BaseGroup):
 class Player(BasePlayer):
     choice = models.StringField(
         choices=['Joker', 'Ace', 'Two', 'Three'],
-        widget=widgets.RadioSelect)
+        widget=widgets.RadioSelect,
+        label="Please choose your card.")
 
     def role(self):
         if self.id_in_group == Constants.role:

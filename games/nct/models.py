@@ -17,7 +17,6 @@ class Constants(BaseConstants):
 
 
 class Subsession(BaseSubsession):
-
     pass
 
 
@@ -26,8 +25,9 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
-    decision = models.StringField(
-        widget=widgets.RadioSelect)
+    decision = models.StringField(widget=widgets.RadioSelect,
+                                  initial='',
+                                  label="Please make your choice.")
 
     def decision_choices(self):
         if self.role() == 1:
@@ -51,51 +51,28 @@ class Player(BasePlayer):
         return self.get_others_in_group()[0]
 
     def set_payoff(self):
-        if self.role() == 1:
-            if self.round_number == 1:
-                payoff = {
-                    'In': {
-                        'Up': 500,
-                        'Down': -1000
+        p1 = self.group.get_player_by_role(1)
+        p2 = self.group.get_player_by_role(2)
+        if self.round_number == 1:
+            payoff = {
+                'In': {
+                        'Up': [500, 100],
+                        'Down': [-1000, -1000]
                     },
-                    'Out': {
-                        None: 100
+                'Out': {
+                        '': [100, 600]
                     }
-                }
-                self.payoff = payoff[self.decision][self.other_player().decision]
-            else:
-                payoff = {
-                    'Up': {
-                        'A': 50,
-                        'B': -50
-                    },
-                    'Down': {
-                        'A': 100,
-                        'B': 0
-                    }
-                }
-                self.payoff = payoff[self.decision][self.other_player().decision]
+            }
+            self.payoff = payoff[p1.decision][p2.decision][self.role() - 1]
         else:
-            if self.round_number == 1:
-                payoff = {
-                    'In': {
-                        'Up': 100,
-                        'Down': -1000
-                    },
-                    'Out': {
-                        None: 600
-                    }
+            payoff = {
+                'Up': {
+                    'A': [50, 100],
+                    'B': [-50, -50]
+                },
+                'Down': {
+                    'A': [100, 50],
+                    'B': [0, -100]
                 }
-                self.payoff = payoff[self.other_player().decision][self.decision]
-            else:
-                payoff = {
-                    'Up': {
-                        'A': 100,
-                        'B': -50
-                    },
-                    'Down': {
-                        'A': 50,
-                        'B': -100
-                    }
-                }
-                self.payoff = payoff[self.other_player().decision][self.decision]
+            }
+            self.payoff = payoff[p1.decision][p2.decision][self.role() - 1]

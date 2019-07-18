@@ -1,10 +1,17 @@
-from otree.api import Currency as c, currency_range
 from . import pages
 from ._builtin import Bot
-from .models import Constants
 
 
 class PlayerBot(Bot):
 
     def play_round(self):
-        pass
+        if self.round_number == 1:
+            yield (pages.Introduction)
+        if self.player.id_in_group == 1:
+            yield (pages.Main, {'effort': 3})
+            assert self.player.payoff == 2
+        else:
+            yield (pages.Main, {'effort': 1})
+            assert self.player.payoff == 4
+        yield (pages.Results)
+

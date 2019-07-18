@@ -1,31 +1,28 @@
-from otree.api import Currency as c, SubmissionMustFail
+from otree.api import SubmissionMustFail
 from . import pages
 from ._builtin import Bot
 
 
 class PlayerBot(Bot):
-    # TODO: this aint workin
+    cases = ['sold', 'unsold']
+
     def play_round(self):
-        other = self.player.other_player()
-        yield (pages.Introduction)
+        if self.round_number == 1:
+            yield (pages.Introduction)
         yield SubmissionMustFail(pages.Main, {'price': -50})
-
+        price = {
+            'sold': 80,
+            'unsold': 30
+        }[self.case]
+        reserve = {
+            'sold': 60,
+            'unsold': 90
+        }[self.case]
         if self.player.role() == 'Buyer':
-            yield (pages.Main, {'price': 80})
-            # if the company is bought successfully
-            if self.player.price >= other.price:
-                assert self.player.payoff == c(self.group.value * 1.5)
-            # if bid was below reserve
-            else:
-                assert self.player.payoff == c(0)
+            yield (pages.Main, {'price': price})
+            assert self.player.payoff == 1.5 * self.group.value if self.case == 'sold' else self.player.payoff == 0
             yield (pages.Results)
-            assert self.player.role() == 'Seller'  # check if roles switched
-        else:  # seller
-            yield (pages.Main, {'price': self.group.value * 2})
-            if self.player.price <= other.price:
-                assert self.player.payoff == c(other.price)
-            else:
-                assert self.player.payoff == c(self.group.value)
+        else:
+            yield (pages.Main, {'price': reserve})
+            assert self.player.payoff == self.player.other_player().price if self.case == 'sold' else self.player.payoff == self.group.value
             yield (pages.Results)
-            assert self.player.role() == 'Buyer'
-

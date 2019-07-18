@@ -1,10 +1,9 @@
-from otree.api import Currency as c, currency_range
 from ._builtin import Page, WaitPage
 
 
 class Introduction(Page):
     def is_displayed(self):
-        return self.player.round_number == 1
+        return self.round_number == 1
 
 
 class P1Decision(Page):
@@ -15,7 +14,8 @@ class P1Decision(Page):
         return self.player.role() == 1
 
 
-class P1WaitPage(WaitPage):
+class P2WaitPage(WaitPage):
+
     def is_displayed(self):
         return self.player.role() == 2
 
@@ -72,7 +72,7 @@ class Final(Page):
 page_sequence = [
     Introduction,
     P1Decision,
-    P1WaitPage,
+    P2WaitPage,
     P2Decision,
     ResultsWaitPage,
     Results,

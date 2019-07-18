@@ -7,54 +7,55 @@
 
 {% block content %}
 
-    <p> You are the {{ player.role }} Player.</p>
-    {% formfield player.choice label="Please choose your card." %}
-    <table class="table table-md table-bordered">
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th colspan="5" scope="col" class="text-center">Column<br></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th rowspan="5" scope="row" class="align-middle text-center">Row</th>
-                        <td></td>
-                            <td>Joker</td>
-                            <td>Ace</td>
-                            <td>Two</td>
-                            <td>Three</td>
-                    </tr>
-                    <tr>
-                        <td>Joker</td>
-                            <td>(5, -5)</td>
-                            <td>(-5, 5)</td>
-                            <td>(-5, 5)</td>
-                            <td>(-5, 5)</td>
-                    </tr>
-                    <tr>
-                        <td>Ace</td>
-                            <td>(-5, 5)</td>
-                            <td>(-5, 5)</td>
-                            <td>(5, -5)</td>
-                            <td>(5, -5)</td>
-                    </tr>
-                    <tr>
-                        <td>Two</td>
-                            <td>(-5, 5)</td>
-                            <td>(5, -5)</td>
-                            <td>(-5, 5)</td>
-                            <td>(5, -5)</td>
-                    </tr>
-                    <tr>
-                        <td>Three</td>
-                            <td>(-5, 5)</td>
-                            <td>(5, -5)</td>
-                            <td>(5, -5)</td>
-                            <td>(-5, 5)</td>
-                    </tr>
-                </tbody>
-            </table>
-    {% next_button %}
+    You are the {{ player.role }} Player.
+    {% formfields %}
 
+    <table class="table table-md table-bordered">
+        <thead>
+            <tr>
+                <th></th>
+                <th colspan="5" scope="col" class="text-center">Column<br></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th rowspan="5" scope="row" class="align-middle text-center">Row</th>
+                <td></td>
+                    <th>Joker</th>
+                    <th>Ace</th>
+                    <th>Two</th>
+                    <th>Three</th>
+            </tr>
+            <tr>
+                <th>Joker</th>
+                    <td>(5, -5)</td>
+                    <td>(-5, 5)</td>
+                    <td>(-5, 5)</td>
+                    <td>(-5, 5)</td>
+            </tr>
+            <tr>
+                <th>Ace</th>
+                    <td>(-5, 5)</td>
+                    <td>(-5, 5)</td>
+                    <td>(5, -5)</td>
+                    <td>(5, -5)</td>
+            </tr>
+            <tr>
+                <th>Two</th>
+                    <td>(-5, 5)</td>
+                    <td>(5, -5)</td>
+                    <td>(-5, 5)</td>
+                    <td>(5, -5)</td>
+            </tr>
+            <tr>
+                <th>Three</th>
+                    <td>(-5, 5)</td>
+                    <td>(5, -5)</td>
+                    <td>(5, -5)</td>
+                    <td>(-5, 5)</td>
+            </tr>
+        </tbody>
+    </table>
+
+    {% next_button %}
 {% endblock %}
