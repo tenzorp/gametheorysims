@@ -1,6 +1,4 @@
-from otree.api import Currency as c, currency_range
 from ._builtin import Page, WaitPage
-import random
 
 
 class Introduction(Page):
@@ -32,30 +30,21 @@ class Results(Page):
         }
 
     def before_next_page(self):
-        self.group.newRound()
+        if self.player.id_in_group == 1:
+            self.group.coin_flip()  # janky way to flip once
 
 
-class Final(Page):
-    timeout_seconds = 30
+class Rematch(Page):
 
     def is_displayed(self):
         return not self.group.new_round
 
-    def vars_for_template(self):
-        opponent = self.player.other_player()
-        my_total = int(sum([p.payoff for p in self.player.in_all_rounds()]))
-        opponent_total = int(sum([p.payoff for p in opponent.in_all_rounds()]))
-        return {
-            'my_payoff': my_total,
-            'opponent_payoff': opponent_total
-        }
-
 
 class RegroupWaitPage(WaitPage):
-    wait_for_all_groups = True
+    group_by_arrival_time = False
 
-    def after_all_players_arrive(self):
-        self.subsession.group_randomly()
+  #  def before_next_page(self):
+   #     self.subsession.group_randomly()
 
     def is_displayed(self):
         return not self.group.new_round
@@ -66,6 +55,6 @@ page_sequence = [
     Main,
     ResultsWaitPage,
     Results,
-    Final,
+    Rematch,
     RegroupWaitPage
 ]

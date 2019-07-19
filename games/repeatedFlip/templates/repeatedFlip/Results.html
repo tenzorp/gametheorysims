@@ -7,9 +7,36 @@
 
 {% block content %}
     <p>
-        You chose {{ player.choice }} and your opponent chose {{ opponent_choice }}. Thus, your payoff is
-        {{ player_payoff }} and your opponent's is {{ opponent_payoff }}.
+        You chose {{ player.choice }} and the other player chose {{ opponent_choice }}. Thus, your payoff is
+        {{ player_payoff }}.
     </p>
+
+    <table class="table-sm table-bordered">
+        <thead>
+            <tr>
+                <th></th>
+                <th colspan="3" scope="col" class="text-center">Other's Choice<br></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th rowspan="3" scope="row" class="align-middle text-center">Row</th>
+                <td></td>
+                    <th>1</th>
+                    <th>2</th>
+            </tr>
+            <tr>
+                <th>1</th>
+                    <td>(32, 32)</td>
+                    <td>(12, 50)</td>
+            </tr>
+            <tr>
+                <th>2</th>
+                    <td>(50, 12)</td>
+                    <td>(25, 25)</td>
+            </tr>
+        </tbody>
+    </table>
 
     {% next_button %}
 {% endblock %}

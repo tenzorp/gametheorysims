@@ -1,20 +1,25 @@
-from otree.api import Currency as c, currency_range
 from . import pages
 from ._builtin import Bot
-from .models import Constants
 
 
 class PlayerBot(Bot):
-    cases = ['oneBetray', 'bothSilent']
+    cases = ['betray', 'bothSilent', 'bothConfess']
 
     def play_round(self):
         yield (pages.Introduction)
-        if self.case == 'oneBetray':
+        if self.case == 'betray':
             if self.player.id_in_group == 1:
                 yield (pages.Main, {'decision': 'Confess'})
-                assert self.player.sentence == 0
+                assert self.player.payoff == 0
             else:
                 yield (pages.Main, {'decision': 'Remain silent'})
-                assert self.player.sentence == 10
-            yield (pages.Results)
+                assert self.player.payoff == 10
+        elif self.case == 'bothSilent':
+            yield (pages.Main, {'decision': 'Remain silent'})
+            assert self.player.payoff == 1
+        else:
+            yield (pages.Main, {'decision': 'Confess'})
+            assert self.player.payoff == 5
+        yield (pages.Results)
+
 

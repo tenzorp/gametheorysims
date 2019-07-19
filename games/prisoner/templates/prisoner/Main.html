@@ -9,5 +9,32 @@
 
     {% formfields %}
 
+    <table class="table table-md table-bordered">
+        <thead>
+            <tr>
+                <th></th>
+                <th colspan="3" scope="col" class="text-center">Column<br></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th rowspan="3" scope="row" class="align-middle text-center">Row</th>
+                <td></td>
+                    <th>Silent</th>
+                    <th>Confess</th>
+            </tr>
+            <tr>
+                <th>Silent</th>
+                    <td>You serve 1 year, Partner serves 1 year</td>
+                    <td>You serve 10 years, Partner serves 0 years</td>
+            </tr>
+            <tr>
+                <th>Confess</th>
+                    <td>You serve 0 years, Partner serves 10 years</td>
+                    <td>You serve 5 years, Partner serves 5 years</td>
+            </tr>
+        </tbody>
+    </table>
+
     {% next_button %}
 {% endblock %}

@@ -9,18 +9,47 @@
 
     <p>
         {% if same_choice %}
-            Both of you chose to {{ my_decision.lower }}.
+            Both of you chose to {{ player.decision.lower }}.
         {% else %}
-            You chose to {{ my_decision.lower }} and the other player chose to {{ opponent_decision.lower }}.
+            You chose to {{ player.decision.lower }} and the other player chose to {{ opponent.decision.lower }}.
         {% endif %}
-    </p>
-
-    <p>
-        As a result, you served {{ player.sentence }}
-            {% if player.sentence == 1 %} year.
+    <br/>
+        As a result, you served {{ player_payoff }}
+            {% if player.payoff == 1 %} year.
+            {% else %} years
+            {% endif %}
+        and the other player served {{ opponent_payoff }}
+            {% if opponent_payoff == 1 %} year.
             {% else %} years.
             {% endif %}
     </p>
+
+    <table class="table table-md table-bordered">
+        <thead>
+            <tr>
+                <th></th>
+                <th colspan="3" scope="col" class="text-center">Column<br></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th rowspan="3" scope="row" class="align-middle text-center">Row</th>
+                <td></td>
+                    <th>Silent</th>
+                    <th>Confess</th>
+            </tr>
+            <tr>
+                <th>Silent</th>
+                    <td>You serve 1 year, Partner serves 1 year</td>
+                    <td>You serve 10 years, Partner serves 0 years</td>
+            </tr>
+            <tr>
+                <th>Confess</th>
+                    <td>You serve 0 years, Partner serves 10 years</td>
+                    <td>You serve 5 years, Partner serves 5 years</td>
+            </tr>
+        </tbody>
+    </table>
 
     {% next_button %}
 {% endblock %}

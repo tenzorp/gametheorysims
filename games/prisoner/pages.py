@@ -21,12 +21,12 @@ class Results(Page):
     timeout_seconds = 30
 
     def vars_for_template(self):
-        my = self.player
-        opponent = my.other_player()
+        opponent = self.player.other_player()
         return {
-            'my_decision': my.decision,
-            'opponent_decision': opponent.decision,
-            'same_choice': my.decision == opponent.decision,
+            'opponent': opponent,
+            'same_choice': self.player.decision == opponent.decision,
+            'player_payoff': int(self.player.payoff),
+            'opponent_payoff': int(opponent.payoff)
         }
 
 

@@ -18,14 +18,6 @@ class Constants(BaseConstants):
     players_per_group = 2
     num_rounds = 1
 
-    # payoff if both remain silent or confess
-    bothConfess = 5
-    bothSilent = 1
-
-    # payoff one betrays the other
-    betrayer = 0
-    betrayed = 10
-
     instructions_template = 'prisoner/instructions.html'
 
 
@@ -43,7 +35,6 @@ class Player(BasePlayer):
         widget=widgets.RadioSelect,
         label='Please choose to confess or remain silent.'
     )
-    sentence = models.IntegerField()
 
     def other_player(self):
         return self.get_others_in_group()[0]
@@ -52,14 +43,14 @@ class Player(BasePlayer):
         payoff = {
             'Confess':
                 {
-                    'Confess': Constants.bothConfess,
-                    'Remain silent': Constants.betrayer
+                    'Confess': 5,
+                    'Remain silent': 0
                 },
             'Remain silent':
                 {
-                    'Confess': Constants.betrayed,
-                    'Remain silent': Constants.bothSilent
+                    'Confess': 10,
+                    'Remain silent': 1
                 }
         }
 
-        self.sentence = payoff[self.decision][self.other_player().decision]
+        self.payoff = payoff[self.decision][self.other_player().decision]

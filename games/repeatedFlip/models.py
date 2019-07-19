@@ -16,19 +16,14 @@ class Constants(BaseConstants):
 
 
 class Subsession(BaseSubsession):
-
-    def creating_session(self):
-        if self.group.new_round:
-            pass
-        else:
-            self.group_randomly()
+    pass
 
 
 class Group(BaseGroup):
     new_round = models.BooleanField()
 
-    def newRound(self):
-        num = random.random() >= 0.51
+    def coin_flip(self):
+        num = random.random() >= 0.50
         if num:
             self.new_round = True
         else:
@@ -38,7 +33,8 @@ class Group(BaseGroup):
 class Player(BasePlayer):
     choice = models.IntegerField(
         choices=[1, 2],
-        widget=widgets.RadioSelect
+        widget=widgets.RadioSelect,
+        label='Please make your choice.'
     )
 
     def other_player(self):

@@ -8,42 +8,42 @@
         <link rel="stylesheet" type="text/css"
               href="{% static 'global/matrix.css' %}"/>
         <p>
-            In this experiment, you will be asked to make decision in several rounds. You will be randomly paired with
+            &emsp;In this experiment, you will be asked to make decision in several rounds. You will be randomly paired with
             another person for a sequence of rounds. Each sequence of rounds is referred to as a match. The length of
             a match is randomly determined. After each round, there is a 50% probability that the match will continue
             for at least another round. This is as if we would flip a coin after each round and continue if tails and
             end if heads. So, for instance, if you are in round 2, the probability there will be a third round is 50%
             and if you are in round 9, the probability there will be another round is also 50%. Once a match ends, you
             will be randomly repaired with another person for a new match.
+            <br/>
+            &emsp;The choices and the payoffs in each round are as follows:
         </p>
-        <p>
-            The choices and the payoffs in each round are as follows:
-            <table class="table table-md table-bordered">
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th colspan="3" scope="col" class="text-center">Other's Choice<br></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th rowspan="3" scope="row" class="align-middle text-center">Row</th>
-                        <td></td>
-                            <td>1</td>
-                            <td>2</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                            <td>(32, 32)</td>
-                            <td>(50, 12)</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                            <td>(50, 12)</td>
-                            <td>(25, 25)</td>
-                    </tr>
-                </tbody>
-            </table>
-        </p>
+
+        <table class="table-sm table-bordered">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th colspan="3" scope="col" class="text-center">Other's Choice<br></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th rowspan="3" scope="row" class="align-middle text-center">Row</th>
+                    <td></td>
+                        <th>1</th>
+                        <th>2</th>
+                </tr>
+                <tr>
+                    <th>1</th>
+                        <td>(32, 32)</td>
+                        <td>(12, 50)</td>
+                </tr>
+                <tr>
+                    <th>2</th>
+                        <td>(50, 12)</td>
+                        <td>(25, 25)</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>

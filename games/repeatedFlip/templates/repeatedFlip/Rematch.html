@@ -1,0 +1,15 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Repeated Game of Random Length: End of Match
+{% endblock %}
+
+{% block content %}
+    <p>
+        This match has ended. Please continue to the next page to be randomly repaired for a new match.
+    </p>
+
+    {% next_button %}
+{% endblock %}
+
