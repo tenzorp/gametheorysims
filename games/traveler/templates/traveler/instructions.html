@@ -2,27 +2,25 @@
 
 <div class="card bg-light instructions">
     <div class="card-body">
-        <h3>
+        <h3 class="card-header">
             Instructions
         </h3>
         <link rel="stylesheet" type="text/css"
               href="{% static 'global/matrix.css' %}"/>
         <p>
-            This experiment consists of 10 periods. In each period, you will be randomly matched with another
+            &emsp;This experiment consists of 10 periods. In each period, you will be randomly matched with another
             participant in the room. The decisions that you and the other participant make will determine the amount
             earned by each of you. At the beginning of each period, you will choose a number or "claim" between 80 and
             200 cents. Your claim amount may be any amount between and including 80 and 200 cents.
-        </p>
-        <p>
-            The other player will also make a claim between, and including, 80 and 200 cents. If the claims are equal,
+        <br/>
+            &emsp;The other player will also make a claim between, and including, 80 and 200 cents. If the claims are equal,
             then you and the other person each receive the amount claimed. If the claims are not equal, then each of
             you will receive the lower of the two claims. In addition, the person who makes the lower claim earns a
             reward of 10 cents, and the person with the higher claim pays a penalty of 10 cents.
-        </p>
-        <p>
-            Example: suppose that your claim is X and the other player's claim is Y.
+        <br/>
+            &emsp;Example: suppose that your claim is X and the other player's claim is Y.
             <ul>
-                <li>If X = Y, then you get X and the other players gets Y.</li>
+                <li>If X = Y, then you get X and the other player gets Y.</li>
                 <li>If X > Y, then you both get Y but, in addition, you pay a penalty of 10 cents and the other player
                     earns a reward of 10 cents.</li>
                 <li>If X < Y, then you both get X but now you earn the 10 cent reward and the other player pays the

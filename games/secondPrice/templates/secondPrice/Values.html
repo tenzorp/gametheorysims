@@ -7,12 +7,14 @@
 
 {% block content %}
 
-    Please enter your values for the following rounds.
-
-    {% formfield player.round_1 label="Last two digits of your phone number:"%}
-    {% formfield player.round_2 label="Date of birth (day of the month):"%}
-    {% formfield player.round_3 label="Last two digits of your campus mailbox or street address:"%}
+    Please enter your value for the following round.
+    {% if player.round_number == 1 %}
+        {% formfield player.value label="Last two digits of your phone number:"%}
+    {% elif player.round_number == 2 %}
+        {% formfield player.value label="Date of birth (day of the month):"%}
+    {% else %}
+        {% formfield player.value label="Last two digits of your campus mailbox or street address:"%}
+    {% endif %}
 
     {% next_button %}
-
 {% endblock %}

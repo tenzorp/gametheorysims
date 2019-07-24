@@ -37,12 +37,8 @@ class Final(Page):
         return self.round_number == 10
 
     def vars_for_template(self):
-        opponent = self.player.other_player()
-        my_total = int(sum([p.payoff for p in self.player.in_all_rounds()]))
-        opponent_total = int(sum([p.payoff for p in opponent.in_all_rounds()]))
         return {
-            'my_payoff': my_total,
-            'opponent_payoff': opponent_total
+            'my_payoff': int(self.participant.payoff)
         }
 
 

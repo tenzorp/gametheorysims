@@ -29,22 +29,8 @@ class Results(Page):
             'opponent_payoff': int(opponent.payoff)
         }
 
-    def before_next_page(self):
-        if self.player.id_in_group == 1:
-            self.group.coin_flip()  # janky way to flip once
-
 
 class Rematch(Page):
-
-    def is_displayed(self):
-        return not self.group.new_round
-
-
-class RegroupWaitPage(WaitPage):
-    group_by_arrival_time = False
-
-  #  def before_next_page(self):
-   #     self.subsession.group_randomly()
 
     def is_displayed(self):
         return not self.group.new_round
@@ -55,6 +41,5 @@ page_sequence = [
     Main,
     ResultsWaitPage,
     Results,
-    Rematch,
-    RegroupWaitPage
+    Rematch
 ]

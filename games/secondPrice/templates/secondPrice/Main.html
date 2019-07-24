@@ -2,11 +2,13 @@
 {% load otree static %}
 
 {% block title %}
-    Second Price Auction
+    Second Price Auction: Round {{ player.round_number }}
 {% endblock %}
 
 {% block content %}
-    <h3> Round {{ player.round_number }} </h3>
+    <p>
+        Your value for this round's item is {{ player.value }}.
+    </p>
     {% formfields %}
 
     {% next_button %}

@@ -7,19 +7,7 @@
 
 {% block content %}
     <p>
-        {% if my_payoff > opponent_payoff %}
-            You won!
-        {% elif my_payoff == opponent_payoff %}
-            You tied!
-        {% else %}
-            You did not win.
-        {% endif %}
-    </p>
-
-     <p>
-         After 10 periods, your total payoff is {{ my_payoff }} cents and your opponent's total payoff is
-         {{ opponent_payoff }} cents.
-
+         After 10 periods, your total payoff is {{ my_payoff }} cents.
     </p>
 
     {% next_button %}

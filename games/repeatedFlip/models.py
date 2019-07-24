@@ -16,7 +16,13 @@ class Constants(BaseConstants):
 
 
 class Subsession(BaseSubsession):
-    pass
+
+    def creating_session(self):
+        for g in self.get_groups():
+            g.coin_flip()
+            print(g.new_round)
+            if g.new_round:
+                self.group_randomly()
 
 
 class Group(BaseGroup):

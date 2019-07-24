@@ -55,20 +55,19 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
-    round_1 = models.CurrencyField(min=0, max=99)
-    round_2 = models.CurrencyField(min=0, max=31)
-    round_3 = models.CurrencyField(min=0, max=99)
-    bid = models.CurrencyField(min=0)
+    value = models.CurrencyField(min=0)
+    bid = models.CurrencyField(min=0, label='Please enter your bid.')
     isWinner = models.BooleanField(initial=False)
+
+    def value_max(self):
+        if self.round_number == 1 or self.round_number == 3:
+            return 99
+        else:
+            return 31
 
     def set_payoff(self):
         if self.isWinner:
-            if self.round_number == 1:
-                self.payoff = self.round_1 - self.group.second
-            elif self.round_number == 2:
-                self.payoff = self.round_2 - self.group.second
-            elif self.round_number == 3:
-                self.payoff = self.round_3 - self.group.second
+            self.payoff = self.value - self.group.second
         else:
             self.payoff = c(0)
 
