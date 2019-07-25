@@ -24,6 +24,11 @@
     {% endif %}
         Thus, your payoff was {{ my_payoff }} and the other player's payoff was {{ opponent_payoff }}.
     </p>
+    {% if player.round_number == 1 %}
+        <img src="{% static 'nct/nct1.png' %}"/>
+    {% else %}
+        <img src="{% static 'nct/nct2.png' %}"/>
+    {% endif %}
 
     {% next_button %}
 {% endblock %}

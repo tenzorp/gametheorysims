@@ -1,0 +1,49 @@
+{% load otree %}
+
+<div class="card bg-light instructions">
+    <div class="card-body">
+        <h3 class="card-header">
+            Instructions
+        </h3>
+        <link rel="stylesheet" type="text/css"
+              href="{% static 'global/matrix.css' %}"/>
+        <p>
+            &emsp;In this game, you will be matched with another student in the room. One student will be assigned the
+            role of the <b>Row Player</b> and the other will be assigned the role of the <b>Column Player.</b> You will
+            play the game with the same partner {{ session.config.number_of_rounds }} times, accumulating payoffs as you
+            play.
+            <br/>
+            &emsp;After each round you will be shown what the other player chose and before you choose your strategy you
+            will use the slider provided to give your belief about what you think the other player will do on the next
+            round.
+            <br/> <br/>
+            &emsp;The payoffs for both players are listed below.
+            <table class="table table-sm table-bordered">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th colspan="4" scope="col" class="text-center">Column<br></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th rowspan="4" scope="row" class="align-middle text-center">Row</th>
+                        <td></td>
+                            <th>Aay</th>
+                            <th>Bee</th>
+                    </tr>
+                    <tr>
+                        <th>One</th>
+                            <td>(6, 2)</td>
+                            <td>(3, 5)</td>
+                    </tr>
+                    <tr>
+                        <th>Two</th>
+                            <td>(3, 5)</td>
+                            <td>(5, 3)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </p>
+    </div>
+</div>

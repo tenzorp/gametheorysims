@@ -16,7 +16,8 @@ SESSION_CONFIGS = [
         'display_name': 'Beauty Contest',
         'num_demo_participants': 3,
         'app_sequence': ['beautyContest'],
-        'endowment': 100
+        'endowment': 100,
+        'doc': """Edit the value of the 'endowment' variable to change the maximum guess that players may make."""
     },
     {
         'name': 'prisoner',
@@ -29,7 +30,8 @@ SESSION_CONFIGS = [
         'display_name': 'Second Price Auction',
         'num_demo_participants': 4,
         'app_sequence': ['secondPrice'],
-        'players_per_group': 4
+        'players_per_group': 4,
+        'doc': """The 'players_per_group' variable is configurable and has a default value of 4."""
     },
     {
         'name': 'priceComp',
@@ -60,7 +62,8 @@ SESSION_CONFIGS = [
         'display_name': 'Minimum Effort Game',
         'num_demo_participants': 5,
         'app_sequence': ['minimum'],
-        'players_per_group': 5
+        'players_per_group': 5,
+        'doc': """The 'players_per_group' variable is configurable and has a default value of 5."""
     },
     {
         'name': 'nct',
@@ -73,7 +76,8 @@ SESSION_CONFIGS = [
         'display_name': 'Voluntary Contribution Game',
         'num_demo_participants': 5,
         'app_sequence': ['voluntary'],
-        'players_per_group': 5
+        'players_per_group': 5,
+        'doc': """The 'players_per_group' variable is configurable and has a default value of 5."""
     },
     {
         'name': 'repeatedFlip',
@@ -111,6 +115,17 @@ SESSION_CONFIGS = [
         'num_demo_participants': 2,
         'app_sequence': ['ultimatum']
     },
+    {
+        'name': 'normalForm',
+        'display_name': 'Repeated Normal Form Game',
+        'num_demo_participants': 2,
+        'app_sequence': ['normalForm'],
+        'number_of_rounds': 10,
+        'display_all_history': False,
+        'doc': """The 'number_of_rounds' variable is configurable and has a default value of 10. The 'display_all_history' 
+        variable determines whether players see values from only the previous round of play or all rounds of play. Its
+        default value is false, so players can review choices from only one round."""
+    }
 ]
 
 
@@ -123,7 +138,7 @@ USE_POINTS = False
 ROOMS = [
     {
         'name': 'class',
-        'display_name': 'Class'
+        'display_name': 'Econ Classroom'
     }
 ]
 
@@ -131,7 +146,8 @@ ADMIN_USERNAME = 'admin'
 # for security, best to set admin password in an environment variable
 ADMIN_PASSWORD = environ.get('OTREE_ADMIN_PASSWORD')
 
-DEMO_PAGE_INTRO_HTML = """ """
+DEMO_PAGE_INTRO_HTML = 'Links for testing and demonstration. <br/> To launch a real study, either create persistent ' \
+                       'links by setting up a room, or create a session through the sessions page.'
 
 SECRET_KEY = 'cv^w#tgt^!9@roz8uu(z%3lys64p^2=a*_%7xg(e#i^kxe%_#f'
 

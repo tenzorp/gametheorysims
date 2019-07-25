@@ -15,6 +15,8 @@ class P1Decision(Page):
 
 
 class P2WaitPage(WaitPage):
+    title_text = ''
+    body_text = 'You are Player 2. Please wait for Player 1 to to make their choice.'
 
     def is_displayed(self):
         return self.player.role() == 2
@@ -53,27 +55,11 @@ class Results(Page):
         }
 
 
-class Final(Page):
-
-    def is_displayed(self):
-        return self.round_number == 2
-
-    def vars_for_template(self):
-        opponent = self.player.other_player()
-        my_total = int(sum([p.payoff for p in self.player.in_all_rounds()]))
-        opponent_total = int(sum([p.payoff for p in opponent.in_all_rounds()]))
-        return {
-            'my_payoff': my_total,
-            'opponent_payoff': opponent_total
-        }
-
-
 page_sequence = [
     Introduction,
     P1Decision,
     P2WaitPage,
     P2Decision,
     ResultsWaitPage,
-    Results,
-    Final
+    Results
 ]
