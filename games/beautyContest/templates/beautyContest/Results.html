@@ -12,10 +12,8 @@
     {% else %}
         You did not win.
     {% endif %}
-
     <p>
-        Your guess was {{ player.guess }} and the average was {{ mean }}.
-        Two-thirds of the mean was {{ group.winning }}.
+        Your guess was {{ player.guess }}. The group's average was {{ mean }} and two-thirds of the mean was {{ group.winning }}.
     </p>
 
     {% next_button %}

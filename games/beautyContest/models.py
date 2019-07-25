@@ -18,19 +18,19 @@ class Constants(BaseConstants):
 
 
 class Subsession(BaseSubsession):
-    def creating_session(self):
-        for g in self.get_groups():  # set max guess value using configurable value
-            g.endowment = self.session.config['endowment']
+    pass
 
 
 class Group(BaseGroup):
-    endowment = models.IntegerField()
     winning = models.FloatField()
 
 
 class Player(BasePlayer):
-    guess = models.FloatField(min=0, max=100, label='')
+    guess = models.FloatField(min=0, label='')
     winner = models.BooleanField()
+
+    def guess_max(self):
+        return self.session.config['endowment']
 
     def guess_error_message(self, value):
         if str(value)[::-1].find('.') > 3:

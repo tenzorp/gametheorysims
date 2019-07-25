@@ -8,7 +8,7 @@
 {% block content %}
     <p>
         {% if player.round_number != 3 %}
-            The applicant has chosen to take {{ applicant_choice }}.
+            The applicant has chosen to take {{ applicant_choice.lower }}.
             {% formfield player.choice label='Please choose a job to offer.' %}
 
             <table class="table-sm table-bordered d-sm-inline-block">
@@ -22,16 +22,16 @@
                     <tr>
                         <th rowspan="3" scope="row" class="align-middle text-center">Employer</th>
                         <td></td>
-                            <td>Easy</td>
-                            <td>Difficult</td>
+                            <th>Easy</th>
+                            <th>Difficult</th>
                     </tr>
                     <tr>
-                        <td>Manager</td>
+                        <th>Manager</th>
                             <td>(0, 100)</td>
                             <td>(0, 50)</td>
                     </tr>
                     <tr>
-                        <td>Clerk</td>
+                        <th>Clerk</th>
                             <td>(60, 60)</td>
                             <td>(60, 10)</td>
                     </tr>
@@ -48,16 +48,16 @@
                     <tr>
                         <th rowspan="3" scope="row" class="align-middle text-center">Employer</th>
                         <td></td>
-                            <td>Easy</td>
-                            <td>Difficult</td>
+                            <th>Easy</th>
+                            <th>Difficult</th>
                     </tr>
                     <tr>
-                        <td>Manager</td>
+                        <th>Manager</th>
                             <td>(100, 100)</td>
                             <td>(100, 80)</td>
                     </tr>
                     <tr>
-                        <td>Clerk</td>
+                        <th>Clerk</th>
                             <td>(60, 60)</td>
                             <td>(60, 40)</td>
                     </tr>
@@ -78,11 +78,11 @@
                 <tbody>
                     <tr>
                         <th rowspan="2" scope="row" class="align-middle text-center">Employer</th>
-                        <td>Manager</td>
+                        <th>Manager</th>
                         <td>(0, 100)</td>
                     </tr>
                     <tr>
-                        <td>Clerk</td>
+                        <th>Clerk</th>
                         <td>(60, 60)</td>
                     </tr>
                 </tbody>
@@ -97,11 +97,11 @@
                 <tbody>
                     <tr>
                         <th rowspan="2" scope="row" class="align-middle text-center">Employer</th>
-                        <td>Manager</td>
+                        <th>Manager</th>
                         <td>(100, 100)</td>
                     </tr>
                     <tr>
-                        <td>Clerk</td>
+                        <th>Clerk</th>
                         <td>(60, 60)</td>
                     </tr>
                 </tbody>

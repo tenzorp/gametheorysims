@@ -6,9 +6,10 @@
 {% endblock %}
 
 {% block content %}
-
-    You requested {{ player.request }} and the other player requested {{ opponent.request }}. Thus, your payoff is
-    {{ player.payoff }} and your opponent's payoff is {{ opponent.payoff }}.
+    <p>
+        You requested {{ player.request }} and the other player requested {{ opponent.request }}. Thus, your payoff is
+        {{ player.payoff }}.
+    </p>
 
     {% next_button %}
 {% endblock %}

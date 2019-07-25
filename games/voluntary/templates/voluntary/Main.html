@@ -2,13 +2,13 @@
 {% load otree static %}
 
 {% block title %}
-    Voluntary Contribution Game
+    Voluntary Contribution Game: Round {{ player.round_number }}
 {% endblock %}
 
 {% block content %}
-    <h3> Round {{ player.round_number }} </h3>
     <p>
-        Please make your contributions.
+        Please make your contribution. You have an endowment of {{ Constants.endowment }} tokens, and all tokens not
+        allocated to the Group Project will be automatically allocated to your Individual Project.
     </p>
     {% formfields %}
 

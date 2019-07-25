@@ -20,7 +20,6 @@ class ResultsWaitPage(WaitPage):
 
 
 class Results(Page):
-    timeout_seconds = 30
 
     def vars_for_template(self):
         opponent = self.player.other_player()
@@ -37,10 +36,8 @@ class Final(Page):
         return self.round_number == 5
 
     def vars_for_template(self):
-        opponent = self.player.other_player()
         return {
-            'my_payoff': int(self.participant.payoff),
-            'opponent_payoff': int(opponent.participant.payoff)
+            'my_payoff': int(self.participant.payoff)
         }
 
 

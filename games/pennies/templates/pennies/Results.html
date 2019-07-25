@@ -2,15 +2,96 @@
 {% load otree static %}
 
 {% block title %}
-    Asymmetric Matching Pennies: Stage {{ player.round_number }}
+    Asymmetric Matching Pennies: Stage {{ round }}
 {% endblock %}
 
 {% block content %}
     <p>
-        You are the {{ player.role }} Player. You chose {{ player.choice }} and your partner chose
-        {{ opponent_choice }}. Thus, your payoff is {{ player_payoff }} and your partner's payoff is
-        {{ opponent_payoff }}.
+        As the {{ player.role }} Player, you chose {{ player.choice.lower }} and your partner chose
+        {{ opponent_choice.lower }}. Thus, your payoff is {{ player_payoff }}.
     </p>
+    {% if stage == 1 %}
+        <table class="table table-xs table-bordered">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th colspan="3" scope="col" class="text-center">Column<br></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th rowspan="3" scope="row" class="align-middle text-center">Row</th>
+                    <td></td>
+                        <th>Heads</th>
+                        <th>Tails</th>
+                </tr>
+                <tr>
+                    <th>Heads</th>
+                    <td>(1, 0)</td>
+                    <td>(0, 1)</td>
+                </tr>
+                <tr>
+                    <th>Tails</th>
+                    <td>(0, 1)</td>
+                    <td>(1, 0)</td>
+                </tr>
+            </tbody>
+        </table>
+    {% elif stage == 2 %}
+        <table class="table table-xs table-bordered">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th colspan="3" scope="col" class="text-center">Column<br></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th rowspan="3" scope="row" class="align-middle text-center">Row</th>
+                    <td></td>
+                        <th>Heads</th>
+                        <th>Tails</th>
+                </tr>
+                <tr>
+                    <th>Heads</th>
+                    <td>(9, 0)</td>
+                    <td>(0, 1)</td>
+                </tr>
+                <tr>
+                    <th>Tails</th>
+                    <td>(0, 1)</td>
+                    <td>(1, 0)</td>
+                </tr>
+            </tbody>
+        </table>
+    {% else %}
+        <table class="table table-xs table-bordered">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th colspan="3" scope="col" class="text-center">Column<br></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th rowspan="3" scope="row" class="align-middle text-center">Row</th>
+                    <td></td>
+                        <th>Heads</th>
+                        <th>Tails</th>
+                </tr>
+                <tr>
+                    <th>Heads</th>
+                    <td>(0.5, 0)</td>
+                    <td>(0, 1)</td>
+                </tr>
+                <tr>
+                    <th>Tails</th>
+                    <td>(0, 1)</td>
+                    <td>(1, 0)</td>
+                </tr>
+            </tbody>
+        </table>
+    {% endif %}
 
     {% next_button %}
 {% endblock %}

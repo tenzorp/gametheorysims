@@ -27,9 +27,9 @@ SESSION_CONFIGS = [
     {
         'name': 'secondPrice',
         'display_name': 'Second Price Auction',
-        'num_demo_participants': 2,
+        'num_demo_participants': 4,
         'app_sequence': ['secondPrice'],
-        'players_per_group': 3
+        'players_per_group': 4
     },
     {
         'name': 'priceComp',
@@ -72,7 +72,8 @@ SESSION_CONFIGS = [
         'name': 'voluntary',
         'display_name': 'Voluntary Contribution Game',
         'num_demo_participants': 5,
-        'app_sequence': ['voluntary']
+        'app_sequence': ['voluntary'],
+        'players_per_group': 5
     },
     {
         'name': 'repeatedFlip',

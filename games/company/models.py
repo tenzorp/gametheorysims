@@ -26,7 +26,7 @@ class Subsession(BaseSubsession):
 
 
 class Group(BaseGroup):
-    value = models.CurrencyField(min=0, initial=0)
+    value = models.CurrencyField(initial=0)
 
 
 class Player(BasePlayer):
@@ -45,7 +45,7 @@ class Player(BasePlayer):
         buyer = self.group.get_player_by_role('Buyer')
         seller = self.group.get_player_by_role('Seller')
         if buyer.price >= seller.price:
-            buyer.payoff = 1.5 * self.group.value - self.price
+            buyer.payoff = 1.5 * self.group.value - buyer.price
             seller.payoff = buyer.price
         else:
             buyer.payoff = 0

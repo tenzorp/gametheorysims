@@ -1,5 +1,4 @@
 from ._builtin import Page, WaitPage
-from .models import Constants
 
 
 class Introduction(Page):
@@ -10,11 +9,7 @@ class Introduction(Page):
 
 class Main(Page):
     form_model = 'player'
-    form_fields = ['gp', 'ip']
-
-    def error_message(self, values):
-        if values['gp'] + values['ip'] != Constants.endowment:
-            return 'Your values must add up to ' + str(Constants.endowment) + '.'
+    form_fields = ['gp']
 
 
 class ResultsWaitPage(WaitPage):
@@ -26,25 +21,22 @@ class ResultsWaitPage(WaitPage):
 
 
 class Results(Page):
-    timeout_seconds = 30
 
     def vars_for_template(self):
         return {
-            'player_payoff': float(self.player.payoff)
+            'player_payoff': float(self.player.payoff),
+            'ip': 50 - self.player.gp
         }
 
 
 class Final(Page):
 
     def is_displayed(self):
-        return self.round_number == 2
+        return self.round_number == 10
 
     def vars_for_template(self):
-        winner_payoff = max(max([[sum(pl.payoff for pl in p.in_all_rounds())] for p in self.group.get_players()]))
-        my_total = sum([p.payoff for p in self.player.in_all_rounds()])
         return {
-            'my_payoff': float(my_total),
-            'winner_payoff': float(winner_payoff)
+            'my_payoff': float(self.participant.payoff)
         }
 
 

@@ -7,15 +7,114 @@
 
 {% block content %}
     <p>
-    {% if player.role == 'Employer' %}
-        The applicant was a {{ group.type }} type and they chose to take {{ opponent_choice }}. You chose to give the
-        applicant a {{ player.choice }}. Thus, your payoff is {{ player_payoff }} and the applicant's payoff was
-        {{ opponent_payoff }}.
-    {% else %}
-        As a {{ group.type }} type applicant, you chose to take {{ player.choice }}. Your employer observed this
-        decision and chose to offer you a {{ opponent_choice }}. Thus, your payoff is {{ player_payoff }} and your
-        employer's payoff is {{ opponent_payoff }}.
-    {% endif %}
+        {% if player.round_number != 3 %}
+            {% if player.role == 'Employer' %}
+                The applicant was a {{ group.type }} type and they chose to take {{ opponent_choice }}. You chose to give the
+                applicant a {{ player.choice }}. Thus, your payoff is {{ player_payoff }} and the applicant's payoff was
+                {{ opponent_payoff }}.
+            {% else %}
+                As a {{ group.type }} type applicant, you chose to take {{ player.choice }}. Your employer observed this
+                decision and chose to offer you a {{ opponent_choice }}. Thus, your payoff is {{ player_payoff }}.
+            {% endif %}
+            <table class="table-sm table-bordered d-sm-inline-block">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th colspan="3" scope="col" class="text-center">Slacker (probability 0.6)<br></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th rowspan="3" scope="row" class="align-middle text-center">Employer</th>
+                        <td></td>
+                            <th>Easy</th>
+                            <th>Difficult</th>
+                    </tr>
+                    <tr>
+                        <th>Manager</th>
+                            <td>(0, 100)</td>
+                            <td>(0, 50)</td>
+                    </tr>
+                    <tr>
+                        <th>Clerk</th>
+                            <td>(60, 60)</td>
+                            <td>(60, 10)</td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table-sm table-bordered d-sm-inline-block">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th colspan="3" scope="col" class="text-center">Go-getter (probability 0.4)<br></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th rowspan="3" scope="row" class="align-middle text-center">Employer</th>
+                        <td></td>
+                            <th>Easy</th>
+                            <th>Difficult</th>
+                    </tr>
+                    <tr>
+                        <th>Manager</th>
+                            <td>(100, 100)</td>
+                            <td>(100, 80)</td>
+                    </tr>
+                    <tr>
+                        <th>Clerk</th>
+                            <td>(60, 60)</td>
+                            <td>(60, 40)</td>
+                    </tr>
+                </tbody>
+            </table>
+        {% else %}
+            {% if player.role == 'Employer' %}
+                The applicant was a {{ group.type }} and sent the message, 'I am a {{ opponent_choice }}.' You
+                chose to give the applicant a {{ player.choice }}. Thus, your payoff is {{ player_payoff }}.
+            {% else %}
+                As a {{ group.type }} type applicant, you chose to send the message, 'I am a {{ player.choice }}.' Your
+                employer received the message and chose to offer you a {{ opponent_choice }}. Thus, your payoff is {{ player_payoff }}.
+            {% endif %}
+            <table class="table-sm table-bordered d-sm-inline-block">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th colspan="2" scope="col" class="text-center">Slacker (probability 0.6)<br></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th rowspan="2" scope="row" class="align-middle text-center">Employer</th>
+                        <td>Manager</td>
+                        <td>(0, 100)</td>
+                    </tr>
+                    <tr>
+                        <td>Clerk</td>
+                        <td>(60, 60)</td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table-sm table-bordered d-sm-inline-block">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th colspan="2" scope="col" class="text-center">Go-getter (probability 0.6)<br></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th rowspan="2" scope="row" class="align-middle text-center">Employer</th>
+                        <td>Manager</td>
+                        <td>(100, 100)</td>
+                    </tr>
+                    <tr>
+                        <td>Clerk</td>
+                        <td>(60, 60)</td>
+                    </tr>
+                </tbody>
+            </table>
+        {% endif %}
     </p>
 
     {% next_button %}

@@ -4,7 +4,7 @@ from ._builtin import Page, WaitPage
 class Introduction(Page):
 
     def is_displayed(self):
-        return self.round_number == 1
+        return self.round_number == 1 or self.round_number == 3
 
 
 class ProposerOffer(Page):
@@ -16,6 +16,8 @@ class ProposerOffer(Page):
 
 
 class ResponderWaitPage(WaitPage):
+    title_text = ' '
+    body_text = 'For this game, you are the responder. Please wait for the proposer to make their offer.'
 
     def is_displayed(self):
         return self.player.role() == 'responder'
@@ -38,6 +40,8 @@ class ResponderCounter(Page):
 
 
 class ProposerWaitPage(WaitPage):
+    title_text = ' '
+    body_text = 'Please wait for the responder to make their decision.'
 
     def is_displayed(self):
         return not self.group.responder_choice and self.round_number > 2 and self.player.role() == 'proposer'
@@ -52,6 +56,8 @@ class ProposerChoice(Page):
 
 
 class ResultsWaitPage(WaitPage):
+    title_text = ' '
+    body_text = 'Please wait for the other player to make their decision.'
 
     def after_all_players_arrive(self):
         for p in self.group.get_players():

@@ -10,7 +10,7 @@ Sim for 'Matching Pennies' game
 class Constants(BaseConstants):
     name_in_url = 'pennies'
     players_per_group = 2
-    num_rounds = 3
+    num_rounds = 12
 
     instructions_template = 'pennies/instructions.html'
     role = random.choice([1, 2])  # randomly choose 'Row' player
@@ -19,9 +19,15 @@ class Constants(BaseConstants):
 class Subsession(BaseSubsession):
 
     def creating_session(self):
-        self.group_randomly()
-        for p in self.get_players():
-            p.participant.vars['total'] = 0
+        if self.round_number == 1:
+            self.group_randomly()
+            for p in self.get_players():
+                p.participant.vars['total'] = 0
+        else:
+            if self.round_number % 4 == 1:
+                self.group_randomly()
+            else:
+                self.group_like_round(self.round_number - 1)
 
 
 class Group(BaseGroup):

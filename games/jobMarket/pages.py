@@ -4,7 +4,7 @@ from ._builtin import Page, WaitPage
 class Introduction(Page):
 
     def is_displayed(self):
-        return self.round_number == 1
+        return self.round_number == 1 or self.round_number == 3
 
 
 class ApplicantChoice(Page):
@@ -16,6 +16,8 @@ class ApplicantChoice(Page):
 
 
 class ApplicantChoiceWaitPage(WaitPage):
+    title_text = ' '
+    body_text = 'You are the employer. Please wait for the applicant to make their decision.'
 
     def is_displayed(self):
         return self.player.role() == 'Employer'

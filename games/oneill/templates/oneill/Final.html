@@ -7,18 +7,54 @@
 
 {% block content %}
     <p>
-        {% if my_payoff > opponent_payoff %}
-            You won!
-        {% elif my_payoff == opponent_payoff %}
-            You tied!
-        {% else %}
-            You did not win.
-        {% endif %}
-    <br/>
-         After 5 rounds, your total payoff is {{ my_payoff }} points and your opponent's total payoff is
-         {{ opponent_payoff }} points.
+         After 5 rounds, your total payoff is {{ my_payoff }} points.
     </p>
-
+    <table class="table table-md table-bordered">
+        <thead>
+            <tr>
+                <th></th>
+                <th colspan="5" scope="col" class="text-center">Column<br></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th rowspan="5" scope="row" class="align-middle text-center">Row</th>
+                <td></td>
+                    <th>Joker</th>
+                    <th>Ace</th>
+                    <th>Two</th>
+                    <th>Three</th>
+            </tr>
+            <tr>
+                <th>Joker</th>
+                    <td>(5, -5)</td>
+                    <td>(-5, 5)</td>
+                    <td>(-5, 5)</td>
+                    <td>(-5, 5)</td>
+            </tr>
+            <tr>
+                <th>Ace</th>
+                    <td>(-5, 5)</td>
+                    <td>(-5, 5)</td>
+                    <td>(5, -5)</td>
+                    <td>(5, -5)</td>
+            </tr>
+            <tr>
+                <th>Two</th>
+                    <td>(-5, 5)</td>
+                    <td>(5, -5)</td>
+                    <td>(-5, 5)</td>
+                    <td>(5, -5)</td>
+            </tr>
+            <tr>
+                <th>Three</th>
+                    <td>(-5, 5)</td>
+                    <td>(5, -5)</td>
+                    <td>(5, -5)</td>
+                    <td>(-5, 5)</td>
+            </tr>
+        </tbody>
+    </table>
     {% next_button %}
 {% endblock %}
 

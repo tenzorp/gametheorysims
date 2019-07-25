@@ -3,7 +3,7 @@ from otree.api import (
 import random
 
 """
-Sim for O'Neill game. Players are matched randomly and given roles randomly.
+Sim for O'Neill game.
 """
 
 

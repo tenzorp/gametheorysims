@@ -28,7 +28,6 @@ class ResultsWaitPage(WaitPage):
 
 
 class Results(Page):
-    timeout_seconds = 30
 
     def vars_for_template(self):
         group = self.group

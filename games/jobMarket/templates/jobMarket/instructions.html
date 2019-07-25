@@ -8,122 +8,125 @@
         <link rel="stylesheet" type="text/css"
               href="{% static 'global/matrix.css' %}"/>
         <p class="card-text">
-            &emsp;There are two stages in this experiment.
-            <br/>
-            &emsp;<b>Stage 1:</b> In this game, you will be matched with another student in the room. One student will be assigned
-            the role of a <b>“job applicant”</b> and the other the <b>“employer.”</b> The job applicant may one of two possible types:
-            Slacker (probability 0.6) or Go-getter (probability 0.4). The job applicant will learn their own type but
-            the employer does not. The job applicant will choose either to take either Easy Courses or Difficult Courses.
-            The employer will observe the applicant’s decision and then offer a Managerial Job or Clerical Job. The
-            employer will receive a payoff of 60 for offering the Clerical job, but the payoff from the Managerial job
-            depends the applicant’s type: 100 for a Go-getter and 0 for a Slacker. The applicant earns a payoff of 100
-            from the Managerial job and 60 from the Clerical job. However, if the applicant takes difficult courses,
-            this is subtracted from his/her payoff. The cost is 50 for Slacker types and 20 for Go-getter types.
-            <br/>
-            &emsp;The payoffs for both players are listed below for each case. The game will be played twice. Each time
-            you will be matched with a different partner and the roles will be reversed.
-            <table class="table-sm table-bordered d-sm-inline-block">
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th colspan="3" scope="col" class="text-center">Slacker (probability 0.6)<br></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th rowspan="3" scope="row" class="align-middle text-center">Employer</th>
-                        <td></td>
-                            <td>Easy</td>
-                            <td>Difficult</td>
-                    </tr>
-                    <tr>
-                        <td>Manager</td>
+            {% if player.round_number == 1 %}
+                &emsp;There are two stages in this experiment.
+                <br/>
+                &emsp;<b>Stage 1:</b> In this game, you will be matched with another student in the room. One student will be assigned
+                the role of a <b>“job applicant”</b> and the other the <b>“employer.”</b> The job applicant may one of two possible types:
+                Slacker (probability 0.6) or Go-getter (probability 0.4). The job applicant will learn their own type but
+                the employer does not. The job applicant will choose either to take either Easy Courses or Difficult Courses.
+                The employer will observe the applicant’s decision and then offer a Managerial Job or Clerical Job. The
+                employer will receive a payoff of 60 for offering the Clerical job, but the payoff from the Managerial job
+                depends the applicant’s type: 100 for a Go-getter and 0 for a Slacker. The applicant earns a payoff of 100
+                from the Managerial job and 60 from the Clerical job. However, if the applicant takes difficult courses,
+                this is subtracted from his/her payoff. The cost is 50 for Slacker types and 20 for Go-getter types.
+                <br/>
+                &emsp;The payoffs for both players are listed below for each case. The game will be played twice. Each time
+                you will be matched with a different partner and the roles will be reversed.
+                <table class="table-sm table-bordered d-sm-inline-block">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th colspan="3" scope="col" class="text-center">Slacker (probability 0.6)<br></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th rowspan="3" scope="row" class="align-middle text-center">Employer</th>
+                            <td></td>
+                                <td>Easy</td>
+                                <td>Difficult</td>
+                        </tr>
+                        <tr>
+                            <td>Manager</td>
+                                <td>(0, 100)</td>
+                                <td>(0, 50)</td>
+                        </tr>
+                        <tr>
+                            <td>Clerk</td>
+                                <td>(60, 60)</td>
+                                <td>(60, 10)</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="table-sm table-bordered d-sm-inline-block">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th colspan="3" scope="col" class="text-center">Go-getter (probability 0.4)<br></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th rowspan="3" scope="row" class="align-middle text-center">Employer</th>
+                            <td></td>
+                                <td>Easy</td>
+                                <td>Difficult</td>
+                        </tr>
+                        <tr>
+                            <td>Manager</td>
+                                <td>(100, 100)</td>
+                                <td>(100, 80)</td>
+                        </tr>
+                        <tr>
+                            <td>Clerk</td>
+                                <td>(60, 60)</td>
+                                <td>(60, 40)</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br/>
+            {% else %}
+                &emsp;<b>Stage 2:</b> This game is the same as the previous one, except now the applicant sends a message about
+                their type, rather than making a decision about courses. You will now be matched with a different student in
+                the room. Once again, the job applicant is a Slacker (probability 0.6) or Go-getter (probability 0.4), but
+                only the applicant knows the type. Now, the applicant can send a message to the employer: “I am a Slacker”
+                or “I am a Go-getter.” The message sent does not affect either players’ payoffs. The employer will observe
+                the applicant’s message and then offer a Managerial Job or Clerical Job. The payoffs are the same as before,
+                except now there are no costs associated with the applicant’s choice – i.e., they always earn 100 from the
+                Managerial job and 60 from the Clerical job.
+                <br/>
+                &emsp;The payoffs for both players are listed below for each case.
+                <br/>
+                <table class="table-sm table-bordered d-sm-inline-block">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th colspan="2" scope="col" class="text-center">Slacker (probability 0.6)<br></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th rowspan="2" scope="row" class="align-middle text-center">Employer</th>
+                            <td>Manager</td>
                             <td>(0, 100)</td>
-                            <td>(0, 50)</td>
-                    </tr>
-                    <tr>
-                        <td>Clerk</td>
+                        </tr>
+                        <tr>
+                            <td>Clerk</td>
                             <td>(60, 60)</td>
-                            <td>(60, 10)</td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table-sm table-bordered d-sm-inline-block">
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th colspan="3" scope="col" class="text-center">Go-getter (probability 0.4)<br></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th rowspan="3" scope="row" class="align-middle text-center">Employer</th>
-                        <td></td>
-                            <td>Easy</td>
-                            <td>Difficult</td>
-                    </tr>
-                    <tr>
-                        <td>Manager</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="table-sm table-bordered d-sm-inline-block">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th colspan="2" scope="col" class="text-center">Go-getter (probability 0.6)<br></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th rowspan="2" scope="row" class="align-middle text-center">Employer</th>
+                            <td>Manager</td>
                             <td>(100, 100)</td>
-                            <td>(100, 80)</td>
-                    </tr>
-                    <tr>
-                        <td>Clerk</td>
+                        </tr>
+                        <tr>
+                            <td>Clerk</td>
                             <td>(60, 60)</td>
-                            <td>(60, 40)</td>
-                    </tr>
-                </tbody>
-            </table>
-            <br/>
-            &emsp;<b>Stage 2:</b> This game is the same as the previous one, except now the applicant sends a message about
-            their type, rather than making a decision about courses. You will now be matched with a different student in
-            the room. Once again, the job applicant is a Slacker (probability 0.6) or Go-getter (probability 0.4), but
-            only the applicant knows the type. Now, the applicant can send a message to the employer: “I am a Slacker”
-            or “I am a Go-getter.” The message sent does not affect either players’ payoffs. The employer will observe
-            the applicant’s message and then offer a Managerial Job or Clerical Job. The payoffs are the same as before,
-            except now there are no costs associated with the applicant’s choice – i.e., they always earn 100 from the
-            Managerial job and 60 from the Clerical job.
-            <br/>
-            &emsp;The payoffs for both players are listed below for each case.
-            <br/>
-            <table class="table-sm table-bordered d-sm-inline-block">
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th colspan="2" scope="col" class="text-center">Slacker (probability 0.6)<br></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th rowspan="2" scope="row" class="align-middle text-center">Employer</th>
-                        <td>Manager</td>
-                        <td>(0, 100)</td>
-                    </tr>
-                    <tr>
-                        <td>Clerk</td>
-                        <td>(60, 60)</td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table-sm table-bordered d-sm-inline-block">
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th colspan="2" scope="col" class="text-center">Go-getter (probability 0.6)<br></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th rowspan="2" scope="row" class="align-middle text-center">Employer</th>
-                        <td>Manager</td>
-                        <td>(100, 100)</td>
-                    </tr>
-                    <tr>
-                        <td>Clerk</td>
-                        <td>(60, 60)</td>
-                    </tr>
-                </tbody>
-            </table>
+                        </tr>
+                    </tbody>
+                </table>
+            {% endif %}
         </p>
     </div>
 </div>

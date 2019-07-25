@@ -2,13 +2,24 @@ from ._builtin import Page, WaitPage
 
 
 class Introduction(Page):
+
     def is_displayed(self):
         return self.round_number == 1
+
+    def vars_for_template(self):
+        return {
+            'stage': (self.round_number // 4) + 1
+        }
 
 
 class Main(Page):
     form_model = 'player'
     form_fields = ['choice']
+
+    def vars_for_template(self):
+        return {
+            'round': self.round_number % 4
+        }
 
 
 class ResultsWaitPage(WaitPage):
@@ -26,11 +37,16 @@ class Results(Page):
         return {
             'player_payoff': int(self.player.payoff),
             'opponent_choice': opponent.choice,
-            'opponent_payoff': int(opponent.payoff)
+            'stage': (self.round_number // 4) + 1,
+            'round': self.round_number % 4
+
         }
 
 
 class Final(Page):
+
+    def is_displayed(self):
+        return self.round_number % 4 == 0
 
     def vars_for_template(self):
         opponent = self.player.other_player()
@@ -47,15 +63,6 @@ class Final(Page):
 # repeated sequence because groups must be rematched only after every 4 rounds
 page_sequence = [
     Introduction,
-    Main,
-    ResultsWaitPage,
-    Results,
-    Main,
-    ResultsWaitPage,
-    Results,
-    Main,
-    ResultsWaitPage,
-    Results,
     Main,
     ResultsWaitPage,
     Results,

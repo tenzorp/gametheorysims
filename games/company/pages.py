@@ -30,9 +30,8 @@ class Results(Page):
     def vars_for_template(self):
         opponent = self.player.get_others_in_group()[0]
         return {
-            'player_payoff': self.player.payoff,
             'opponent': opponent,
-            'value': self.group.value
+            'sold': self.group.get_player_by_role('Buyer').price >= self.group.get_player_by_role('Seller').price
         }
 
 
