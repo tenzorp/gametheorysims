@@ -23,13 +23,7 @@
                 </tr>
             </thead>
             <tbody>
-                {% for val in range %}
-                    <tr>
-                        <td>{{ p1_choices.val }}</td>
-                        <td>{{ p2_choices.val }}</td>
-                        <td>{{ p1_payoffs.val}}</td>
-                    </tr>
-                {% endfor %}
+                {{ body }}
                 <tr>
                     <td/><td/>
                     <th>{{ participant.payoff }}</th>

@@ -52,13 +52,21 @@ class Player(BasePlayer):
         i = 0 if self.role() == 'Row' else 1
         self.payoff = payoff[self.group.get_player_by_role('Row').choice][self.group.get_player_by_role('Column').choice][i]
 
+    def table_body(self):
+        my_choices = [p.choice for p in self.in_all_rounds()]
+        other_choices = [p.choice for p in self.other_player().in_all_rounds()]
+        my_payoffs = [p.payoff for p in self.in_all_rounds()]
+        body = ''
+        for i in range(self.round_number):
+            row = '<tr> <td>%s</td> <td>%s</td> <td>%s</td> </tr>' % (my_choices[i], other_choices[i], my_payoffs[i])
+            body += row
+        return body
+
+
     def vars_for_template(self):
         if self.session.config['display_all_history']:
             return {
-                'range': range(self.round_number),
-                'p1_choices': [p.choice for p in self.in_all_rounds()],
-                'p2_choices': [p.choice for p in self.other_player().in_all_rounds()],
-                'p1_payoffs': [p.payoff for p in self.in_all_rounds()],
+                'body': self.table_body(),
                 'other': self.other_player()
             }
         else:
