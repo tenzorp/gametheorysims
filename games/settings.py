@@ -12,6 +12,18 @@ SESSION_CONFIG_DEFAULTS = {
 
 SESSION_CONFIGS = [
     {
+        'name': 'company',
+        'display_name': 'Acquiring a Company',
+        'num_demo_participants': 2,
+        'app_sequence': ['company']
+    },
+    {
+        'name': 'pennies',
+        'display_name': 'Asymmetric Matching Pennies',
+        'num_demo_participants': 2,
+        'app_sequence': ['pennies']
+    },
+    {
         'name': 'beautyContest',
         'display_name': 'Beauty Contest',
         'num_demo_participants': 3,
@@ -20,24 +32,16 @@ SESSION_CONFIGS = [
         'doc': """Edit the value of the 'endowment' variable to change the maximum guess that players may make."""
     },
     {
-        'name': 'prisoner',
-        'display_name': "Prisoner's Dilemma",
+        'name': 'cooperative',
+        'display_name': 'Cooperative Bargaining Game',
         'num_demo_participants': 2,
-        'app_sequence': ['prisoner']
+        'app_sequence': ['cooperative']
     },
     {
-        'name': 'secondPrice',
-        'display_name': 'Second Price Auction',
-        'num_demo_participants': 4,
-        'app_sequence': ['secondPrice'],
-        'players_per_group': 4,
-        'doc': """The 'players_per_group' variable is configurable and has a default value of 4."""
-    },
-    {
-        'name': 'priceComp',
-        'display_name': 'Price Competition',
+        'name': 'eleven',
+        'display_name': '11-20 Game',
         'num_demo_participants': 2,
-        'app_sequence': ['priceComp']
+        'app_sequence': ['eleven']
     },
     {
         'name': 'frontrunner',
@@ -46,16 +50,10 @@ SESSION_CONFIGS = [
         'app_sequence': ['frontrunner']
     },
     {
-        'name': 'oneill',
-        'display_name': "O'Neill Game",
+        'name': 'jobMarket',
+        'display_name': 'Job Market Signaling',
         'num_demo_participants': 2,
-        'app_sequence': ['oneill']
-    },
-    {
-        'name': 'traveler',
-        'display_name': "Traveler's Dilemma",
-        'num_demo_participants': 2,
-        'app_sequence': ['traveler']
+        'app_sequence': ['jobMarket']
     },
     {
         'name': 'minimum',
@@ -72,48 +70,28 @@ SESSION_CONFIGS = [
         'app_sequence': ['nct']
     },
     {
-        'name': 'voluntary',
-        'display_name': 'Voluntary Contribution Game',
-        'num_demo_participants': 5,
-        'app_sequence': ['voluntary'],
-        'players_per_group': 5,
-        'doc': """The 'players_per_group' variable is configurable and has a default value of 5."""
+        'name': 'oneill',
+        'display_name': "O'Neill Game",
+        'num_demo_participants': 2,
+        'app_sequence': ['oneill']
+    },
+    {
+        'name': 'priceComp',
+        'display_name': 'Price Competition',
+        'num_demo_participants': 2,
+        'app_sequence': ['priceComp']
+    },
+    {
+        'name': 'prisoner',
+        'display_name': "Prisoner's Dilemma",
+        'num_demo_participants': 2,
+        'app_sequence': ['prisoner']
     },
     {
         'name': 'repeatedFlip',
         'display_name': 'Repeated Game of Random Length',
         'num_demo_participants': 4,
         'app_sequence': ['repeatedFlip']
-    },
-    {
-        'name': 'company',
-        'display_name': 'Acquiring a Company',
-        'num_demo_participants': 2,
-        'app_sequence': ['company']
-    },
-    {
-        'name': 'jobMarket',
-        'display_name': 'Job Market Signaling',
-        'num_demo_participants': 2,
-        'app_sequence': ['jobMarket']
-    },
-    {
-        'name': 'pennies',
-        'display_name': 'Asymmetric Matching Pennies',
-        'num_demo_participants': 2,
-        'app_sequence': ['pennies']
-    },
-    {
-        'name': 'eleven',
-        'display_name': '11-20 Game',
-        'num_demo_participants': 2,
-        'app_sequence': ['eleven']
-    },
-    {
-        'name': 'ultimatum',
-        'display_name': 'Ultimatum Game',
-        'num_demo_participants': 2,
-        'app_sequence': ['ultimatum']
     },
     {
         'name': 'normalForm',
@@ -123,9 +101,37 @@ SESSION_CONFIGS = [
         'number_of_rounds': 10,
         'display_all_history': False,
         'doc': """The 'number_of_rounds' variable is configurable and has a default value of 10. The 'display_all_history' 
-        variable determines whether players see values from only the previous round of play or all rounds of play. Its
-        default value is false, so players can review choices from only one round."""
-    }
+variable determines whether players see values from only the previous round of play or all rounds of play. Its
+default value is false, so players can review choices from only one round."""
+    },
+    {
+        'name': 'secondPrice',
+        'display_name': 'Second Price Auction',
+        'num_demo_participants': 4,
+        'app_sequence': ['secondPrice'],
+        'players_per_group': 4,
+        'doc': """The 'players_per_group' variable is configurable and has a default value of 4."""
+    },
+    {
+        'name': 'traveler',
+        'display_name': "Traveler's Dilemma",
+        'num_demo_participants': 2,
+        'app_sequence': ['traveler']
+    },
+    {
+        'name': 'ultimatum',
+        'display_name': 'Ultimatum Game',
+        'num_demo_participants': 2,
+        'app_sequence': ['ultimatum']
+    },
+    {
+        'name': 'voluntary',
+        'display_name': 'Voluntary Contribution Game',
+        'num_demo_participants': 5,
+        'app_sequence': ['voluntary'],
+        'players_per_group': 5,
+        'doc': """The 'players_per_group' variable is configurable and has a default value of 5."""
+    },
 ]
 
 
