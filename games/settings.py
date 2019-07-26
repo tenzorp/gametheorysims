@@ -99,7 +99,7 @@ SESSION_CONFIGS = [
         'num_demo_participants': 2,
         'app_sequence': ['normalForm'],
         'number_of_rounds': 10,
-        'display_all_history': False,
+        'display_all_history': True,
         'doc': """The 'number_of_rounds' variable is configurable and has a default value of 10. The 'display_all_history' 
 variable determines whether players see values from only the previous round of play or all rounds of play. Its
 default value is false, so players can review choices from only one round."""
