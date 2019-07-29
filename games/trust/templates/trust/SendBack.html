@@ -1,0 +1,16 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Trust Game: Round {{ player.round_number }}
+{% endblock %}
+
+{% block content %}
+
+    <p>
+        You are Player B. Player A sent you {{ group.sent_amount }}, so you received {{ sent }}.
+    </p>
+    {% formfields %}
+
+    {% next_button %}
+{% endblock %}

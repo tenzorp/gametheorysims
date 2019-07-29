@@ -10,109 +10,124 @@
         You are the {{ player.role }} Player and you chose {{ player.choice.lower }}. The {{ other.role }} Player chose
         {{ other.choice.lower }}.
     </p>
-    {% if session.config.display_all_history %}
-        <table class="table table-sm table-striped d-sm-inline-block">
-            <thead>
-                <tr>
-                    <th scope="col" colspan="3">History of Play</th>
-                </tr>
-                <tr>
-                    <th scope="col">Your Choice</th>
-                    <th scope="col">{{ other.role }}'s Choice</th>
-                    <th scope="col">Your Payoff</th>
-                </tr>
-            </thead>
-            <tbody>
-                {{ body }}
-                <tr>
-                    <td/><td/>
-                    <th>{{ participant.payoff }}</th>
-                </tr>
-            </tbody>
-        </table>
-    {% else %}
-        {% if player.round_number == 1 %}
-            <table class="table table-sm table-striped text-center d-sm-inline-block" style="width: 15em;">
-                <thead>
-                    <tr>
-                        <th scope="col" colspan="3">History of Play</th>
-                    </tr>
-                    <tr>
-                        <th scope="col">Your Choice</th>
-                        <th scope="col">{{ other.role }}'s Choice</th>
-                        <th scope="col">Your Payoff</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>{{ player.choice }}</td>
-                        <td>{{ other.choice }}</td>
-                        <td>{{ player.payoff }}</td>
-                    </tr>
-                    <tr>
-                        <td colspan="2"/>
-                        <th>{{ participant.payoff }}</th>
-                    </tr>
-                </tbody>
-            </table>
-        {% else %}
-            <table class="table table-sm table-striped text-center d-sm-inline-block" style="width: 15em;">
-                <thead>
-                    <tr>
-                        <th scope="col" colspan="3">History of Play</th>
-                    </tr>
-                    <tr>
-                        <th scope="col">Your Choice</th>
-                        <th scope="col">{{ other.role }}'s Choice</th>
-                        <th scope="col">Your Payoff</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>{{ p1_last.choice }}</td>
-                        <td>{{ p2_last.choice }}</td>
-                        <td>{{ p1_last.payoff }}</td>
-                    </tr>
-                    <tr>
-                        <td>{{ player.choice }}</td>
-                        <td>{{ other.choice }}</td>
-                        <td>{{ player.payoff }}</td>
-                    </tr>
-                    <tr>
-                        <td colspan="2"/>
-                        <th>{{ participant.payoff }}</th>
-                    </tr>
-                </tbody>
-            </table>
-        {% endif %}
-    {% endif %}
+    <div class="container">
+        <div class="row">
+            <div class="col-auto">
+            {% if session.config.display_all_history %}
+                <table class="table table-sm table-striped text-center" style="width: 15em;">
+                    <thead>
+                        <tr>
+                            <th scope="col" colspan="3">History of Play</th>
+                        </tr>
+                        <tr>
+                            <th scope="col">Your Choice</th>
+                            <th scope="col">{{ other.role }}'s Choice</th>
+                            <th scope="col">Your Payoff</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for a, b in players %}
+                            <tr>
+                                <td>{{ a.choice }}</td>
+                                <td>{{ b.choice }}</td>
+                                <td>{{ a.payoff }}</td>
+                            </tr>
+                        {% endfor %}
+                        <tr>
+                            <td/><td/>
+                            <th>{{ participant.payoff }}</th>
+                        </tr>
+                    </tbody>
+                </table>
+            {% else %}
+                {% if player.round_number == 1 %}
+                    <table class="table table-sm table-striped text-center" style="width: 15em;">
+                        <thead>
+                            <tr>
+                                <th scope="col" colspan="3">History of Play</th>
+                            </tr>
+                            <tr>
+                                <th scope="col">Your Choice</th>
+                                <th scope="col">{{ other.role }}'s Choice</th>
+                                <th scope="col">Your Payoff</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{ player.choice }}</td>
+                                <td>{{ other.choice }}</td>
+                                <td>{{ player.payoff }}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"/>
+                                <th>{{ participant.payoff }}</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                {% else %}
+                    <table class="table table-sm table-striped text-center" style="width: 15em;">
+                        <thead>
+                            <tr>
+                                <th scope="col" colspan="3">History of Play</th>
+                            </tr>
+                            <tr>
+                                <th scope="col">Your Choice</th>
+                                <th scope="col">{{ other.role }}'s Choice</th>
+                                <th scope="col">Your Payoff</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{ p1_last.choice }}</td>
+                                <td>{{ p2_last.choice }}</td>
+                                <td>{{ p1_last.payoff }}</td>
+                            </tr>
+                            <tr>
+                                <td>{{ player.choice }}</td>
+                                <td>{{ other.choice }}</td>
+                                <td>{{ player.payoff }}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"/>
+                                <th>{{ participant.payoff }}</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                {% endif %}
+            {% endif %}
+            </div>
+            <div class="col-auto">
 
-    <table class="table table-md table-striped text-center d-md-inline-block" style="width: 15em;">
-        <thead>
-            <tr>
-                <th></th>
-                <th colspan="4" scope="col" class="text-center">Column<br></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th rowspan="4" scope="row" class="align-middle text-center">Row</th>
-                <td></td>
-                    <th>Aay</th>
-                    <th>Bee</th>
-            </tr>
-            <tr>
-                <th scope="row">One</th>
-                    <td>(6, 2)</td>
-                    <td>(3, 5)</td>
-            </tr>
-            <tr>
-                <th scope="row">Two</th>
-                    <td>(3, 5)</td>
-                    <td>(5, 3)</td>
-            </tr>
-        </tbody>
-    </table>
+            <table class="table table-sm table-striped text-center" style="width: 15em;">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th colspan="4" scope="col">Column<br></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th rowspan="4" scope="row" class="align-middle">Row</th>
+                        <td></td>
+                            <th>Aay</th>
+                            <th>Bee</th>
+                    </tr>
+                    <tr>
+                        <th scope="row">One</th>
+                            <td>(6, 2)</td>
+                            <td>(3, 5)</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Two</th>
+                            <td>(3, 5)</td>
+                            <td>(5, 3)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            </div>
+        </div>
+    </div>
 
     {% if not subsession.end_round%}
         {% next_button %}

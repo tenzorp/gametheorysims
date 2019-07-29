@@ -9,7 +9,7 @@ Sim for Repeated Normal Form game
 class Constants(BaseConstants):
     name_in_url = 'normalForm'
     players_per_group = 2
-    num_rounds = 50
+    num_rounds = 100
 
     instructions_template = 'normalForm/instructions.html'
     role = choice([1, 2])
@@ -52,23 +52,22 @@ class Player(BasePlayer):
         i = 0 if self.role() == 'Row' else 1
         self.payoff = payoff[self.group.get_player_by_role('Row').choice][self.group.get_player_by_role('Column').choice][i]
 
-    def table_body(self):
-        my_choices = [p.choice for p in self.in_all_rounds()]
-        other_choices = [p.choice for p in self.other_player().in_all_rounds()]
-        my_payoffs = [p.payoff for p in self.in_all_rounds()]
-        body = ''
-        for i in range(self.round_number):
-            row = '<tr> <td>%s</td> <td>%s</td> <td>%s</td> </tr>' % (my_choices[i], other_choices[i], my_payoffs[i])
-            body += row
-        return body
-
-
     def vars_for_template(self):
         if self.session.config['display_all_history']:
-            return {
-                'body': self.table_body(),
-                'other': self.other_player()
-            }
+            if self.choice is None:  # for main page
+                me_all = [p for p in self.in_previous_rounds()]
+                other_all = [p for p in self.other_player().in_previous_rounds()]
+                return {
+                    'other': self.other_player(),
+                    'players': zip(me_all, other_all)
+                }
+            else:  # for results page
+                me_all = [p for p in self.in_all_rounds()]
+                other_all = [p for p in self.other_player().in_all_rounds()]
+                return {
+                    'other': self.other_player(),
+                    'players': zip(me_all, other_all)
+                }
         else:
             if self.round_number == 1:
                 return {

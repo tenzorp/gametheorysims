@@ -119,6 +119,16 @@ default value is false, so players can review choices from only one round."""
         'app_sequence': ['traveler']
     },
     {
+        'name': 'trust',
+        'display_name': 'Trust Game',
+        'num_demo_participants': 2,
+        'app_sequence': ['trust'],
+        'endowment': 10,
+        'multiplier': 3,
+        'doc': """The endowment variable determines how much Player A is initially given. The multiplier variable determines
+        how much the amount sent by Player A is multiplied by. Default values are 10 and 3, respectively."""
+    },
+    {
         'name': 'ultimatum',
         'display_name': 'Ultimatum Game',
         'num_demo_participants': 2,

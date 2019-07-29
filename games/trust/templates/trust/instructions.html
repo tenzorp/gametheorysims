@@ -1,0 +1,29 @@
+{% load otree %}
+
+<div class="card bg-light instructions">
+    <div class="card-body">
+        <h3 class="card-header">
+            Instructions
+        </h3>
+        <link rel="stylesheet" type="text/css"
+              href="{% static 'global/matrix.css' %}"/>
+        <p>
+            &emsp;In this game, you have been randomly paired with another person in the class. One person will be <b>Player A</b>
+            and the other person will be <b>Player B</b>.
+            <br/>
+            &emsp;To begin, both Player A and Player B have been given {{ session.config.endowment }} dollars. Player A can
+            choose how many of their dollars to send to Player B. Any amount sent to Player A is multiplied by
+            {{ session.config.multiplier }} and Player B receives the increased amount. In other words, for every dollar
+            that Player A sends to Player B, Player B actually receives {{ session.config.multiplier }} dollars. After
+            learning how much they were sent by Player A, Player B will then decide how much money of the money they
+            received to send back to Player A, and how much to keep.
+            <br/>
+            &emsp;For example, imagine that Player A chooses to send 2 of their 10 dollars to Player B. Player A then has 8
+            dollars left. Player B receives {{ session.config.multiplier }} times 2 dollars. Player B can then decide how
+            many of those dollars to return to Player A and how much to keep.
+            <br/> <br/>
+            &emsp;You will play this game five times with a different randomly selected partner each time. You will stay in
+            the same role (Player A or Player B) for all five rounds.
+        </p>
+    </div>
+</div>
