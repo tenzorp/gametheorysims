@@ -1,0 +1,37 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Voluntary Contributions with Punishment: Round {{ player.round_number }}
+{% endblock %}
+
+{% block content %}
+
+    {% if player.contribution is None %}
+        <p>
+            You have an endowment of {{ session.config.endowment }} dollars. Please choose how much you would like to
+            contribute to the group account. You will keep the remainder.
+        </p>
+        {% formfield player.contribution label='' %}
+    {% else %}
+        <table class="table table-md table-striped text-center" style="width: 50%">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th scope="col" class="text-center">Group Contributions<br></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                {% for cont in contributions %}
+                    <td>cont</td>
+                {% endfor %}
+                </tr>
+            </tbody>
+        </table>
+        {% formfield player.deductions label='' %}
+
+    {% endif %}
+
+    {% next_button %}
+{% endblock %}

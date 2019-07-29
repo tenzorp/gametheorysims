@@ -125,8 +125,8 @@ default value is false, so players can review choices from only one round."""
         'app_sequence': ['trust'],
         'endowment': 10,
         'multiplier': 3,
-        'doc': """The endowment variable determines how much Player A is initially given. The multiplier variable determines
-        how much the amount sent by Player A is multiplied by. Default values are 10 and 3, respectively."""
+        'doc': """The 'endowment' variable determines how much Player A is initially given. The 'multiplier' variable 
+        determines how much the amount sent by Player A is multiplied by. Default values are 10 and 3, respectively."""
     },
     {
         'name': 'ultimatum',
@@ -142,6 +142,16 @@ default value is false, so players can review choices from only one round."""
         'players_per_group': 5,
         'doc': """The 'players_per_group' variable is configurable and has a default value of 5."""
     },
+    {
+        'name': 'punishment',
+        'display_name': 'Voluntary Contributions with Punishment',
+        'num_demo_participants': 4,
+        'app_sequence': ['punishment'],
+        'players_per_group': 4,
+        'endowment': 20,
+        'doc': """The 'players_per_group' variable is configurable and has a default value of 4. The 'endowment' variable
+        determines how much money is given to each player in the first stage of the game."""
+    }
 ]
 
 

@@ -1,29 +1,39 @@
 from otree.api import (
-    models, widgets, BaseConstants, BaseSubsession, BaseGroup, BasePlayer,
-    Currency as c, currency_range
-)
+    models, BaseConstants, BaseSubsession, BaseGroup, BasePlayer)
 
 
-author = 'Your name here'
-
-doc = """
-Your app description
+"""
+Sim for Voluntary Contributions with Punishment game - code pulled from first VC game
 """
 
 
 class Constants(BaseConstants):
     name_in_url = 'punishment'
     players_per_group = None
-    num_rounds = 1
+    num_rounds = 10
+
+    instructions_template = 'punishment/instructions.html'
 
 
 class Subsession(BaseSubsession):
-    pass
+
+    def creating_session(self):
+        group_matrix = []
+        players = self.get_players()
+        ppg = self.session.config['players_per_group']
+        for i in range(0, len(players), ppg):
+            group_matrix.append(players[i:i + ppg])
+        self.set_group_matrix(group_matrix)
 
 
 class Group(BaseGroup):
-    pass
+    group_project = models.CurrencyField()
 
 
 class Player(BasePlayer):
-    pass
+    contribution = models.CurrencyField()
+    deductions = models.IntegerField()
+
+    def contribution_max(self):
+        return self.session.config['endowment'] if self.contribution is None else 5
+

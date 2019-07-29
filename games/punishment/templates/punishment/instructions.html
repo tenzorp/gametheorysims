@@ -1,0 +1,63 @@
+{% load otree %}
+
+<div class="card bg-light instructions">
+    <div class="card-body">
+        <h3 class="card-header">
+            Instructions
+        </h3>
+        <link rel="stylesheet" type="text/css"
+              href="{% static 'global/matrix.css' %}"/>
+        <p>
+            {% if player.contribution is None %}
+                &emsp;In this game, you will be matched into a group of {{ session.config.players_per_group }} people and
+                you will play 10 rounds in this group. Each round consists of two stages.
+                <br/>
+                &emsp;<b>In the first stage</b> of each round, each person is given an endowment of
+                {{ session.config.endowment }} dollars and can choose how many of these dollars to keep for themselves and
+                how many to contribute to a group account. Each person receives a return of 0.5 for each dollar that is
+                contributed by someone to the group account. In other words, your payoff after each group member makes their
+                contribution decision is:
+                <br/>
+                &emsp;&emsp;<b>Payoff from First Stage = {{ session.config.endowment }} - Own Contribution + 0.5 (Total Amount
+                Contributed by All Group Members)</b>
+                <br/> <br/>
+                &emsp;<b>In the second stage,</b>
+            {% else %}
+                <b>&emsp;Stage two:</b>
+            {% endif %}
+
+            you will see the amount contributed to the group account by all
+            {{ session.config.players_per_group }} participants of your group. The order in which each person’s
+            contribution appears is determined at random in each round, so you will not be able to track an
+            individual’s contributions across rounds. Moreover, in this stage, you can decide whether to decrease
+            the payoffs of the others in your group by assigning deduction points. These other participants can also
+            decrease your payoff if they wish to. You will have to decide how many deduction points to assign to
+            each of these other three participants in your group. You must enter a number for each of them.
+            If you do not wish to change the payoffs of a person in your group then you must enter 0. You can assign
+            up to 5 points to each participant.
+            <br/>
+            &emsp;You will incur costs from assigning deduction points. Every deduction point you assign costs you 1
+            dollar. For example, if you assign 2 deduction points to one person, this costs you 2 dollars; if, in
+            addition, you assign 4 deduction points to another person this costs you an additional 4 dollars.
+            For each dollar that you spend on a group member, you reduce that person’s payoff for the round by 3
+            dollars. How much the payoffs at the second stage are decreased depends on the sum of deduction points
+            received. For instance, if somebody receives a total of 3 deduction points (from all other participants
+            in this period), his or her earnings would be decreased by 9 dollars.
+            <br/> <br/>
+            &emsp;Your total payoff for the round is therefore calculated as follows:
+            <br/>
+            &emsp;&emsp;<b>Payoff from First Stage - 3 x (sum of received deduction points) - (sum of deduction points
+            you have assigned)</b>
+            <br/>
+            &emsp;To summarize:
+            <ol>
+                <li>In each round, you receive an endowment of {{ session.config.endowment }} dollars and decide how
+                    much to contribute to the group account.</li>
+                <li>For each dollar contributed to the group account by someone, you earn 0.5 dollars.</li>
+                <li>After seeing how much each person has contributed, you can assign deduction points to each of
+                    the other three group members. You may assign up to 5 deduction points to each group member.
+                    Each point assigned costs you 1 dollar and reduces that person’s earnings by 3 dollars.</li>
+            </ol>
+        </p>
+    </div>
+</div>
