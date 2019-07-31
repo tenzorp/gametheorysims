@@ -24,11 +24,13 @@
                 {% for i in range %}
                     <th>P{{ i }}</th>
                 {% endfor %}
+                <th>Total</th>
             </tr>
             <tr>
                 {% for cont in contributions %}
                     <td>{{ cont.0 }}</td>
                 {% endfor %}
+                <td>group.group_project</td>
             </tr>
         </tbody>
     </table>
