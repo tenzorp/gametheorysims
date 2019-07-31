@@ -35,5 +35,5 @@ class Player(BasePlayer):
     deductions = models.IntegerField()
 
     def contribution_max(self):
-        return self.session.config['endowment'] if self.contribution is None else 5
+        return self.session.config['endowment']
 

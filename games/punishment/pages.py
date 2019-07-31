@@ -1,4 +1,3 @@
-from otree.api import Currency as c, currency_range
 from ._builtin import Page, WaitPage
 from random import shuffle
 
@@ -11,13 +10,24 @@ class Introduction(Page):
 
 class Main(Page):
     form_model = 'player'
-    form_fields = ['contribution', 'deductions']
+    form_fields = ['contribution']
+
+
+class ContributionsWaitPage(WaitPage):
+    pass
+
+
+class Deductions(Page):
+    form_model = 'player'
+    form_fields = ['deductions']
 
     def vars_for_template(self):
-        if self.player.contribution is not None:
-            return {
-                'contributions': shuffle([p.contribution for p in self.group.get_players()])  # randomize
-            }
+        contributions = [(p.contribution, p.id_in_group) for p in self.group.get_players()]
+        shuffle(contributions)
+        return {
+            'contributions': contributions,
+            'range': range(1, self.session.config['players_per_group'] + 1)
+        }
 
 
 class ResultsWaitPage(WaitPage):
@@ -33,8 +43,9 @@ class Results(Page):
 page_sequence = [
     Introduction,
     Main,
+    ContributionsWaitPage,
     Introduction,
-    Main,
+    Deductions,
     ResultsWaitPage,
     Results
 ]
